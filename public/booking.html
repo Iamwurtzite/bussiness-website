@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book your dream wedding event with Naishvi Celebrations. Fill in the details and our team will craft a custom plan for you.">
+  <title>Book Your Event — Naishvi Celebrations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-name">NAISHVI CELEBRATIONS</span>
+        <span class="logo-tagline">WEDDINGS &bull; EVENTS &bull; DESTINATIONS</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="index.html#events">Wedding Services</a>
+        <a href="index.html#services">Events</a>
+        <a href="index.html#packages">Packages</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="index.html#about">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="nav-auth" id="navAuth">
+        <a href="login.html" class="btn btn-gold"><i class="fas fa-user"></i> Login / Sign Up</a>
+      </div>
+      <div class="mobile-toggle" id="mobileToggle">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h1>Book Your <span class="gold-text">Event</span></h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <i class="fas fa-chevron-right" style="font-size:0.65rem;"></i> <span>Booking</span>
+    </div>
+  </div>
+
+  <!-- BOOKING SECTION -->
+  <section class="booking-section">
+    <div class="container">
+      <div class="booking-form-container" data-aos="fade-up">
+        <!-- Steps Indicator -->
+        <div class="booking-steps">
+          <div class="booking-step active" data-step="1">
+            <span class="step-num">1</span> Event Details
+          </div>
+          <div class="booking-step" data-step="2">
+            <span class="step-num">2</span> Services
+          </div>
+          <div class="booking-step" data-step="3">
+            <span class="step-num">3</span> Package
+          </div>
+          <div class="booking-step" data-step="4">
+            <span class="step-num">4</span> Personal Info
+          </div>
+        </div>
+
+        <form id="bookingForm" novalidate>
+          <!-- Step 1: Event Details -->
+          <div class="booking-form-step active" id="step1">
+            <h3 style="margin-bottom:8px;">Event Details</h3>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">Tell us about the event you're planning.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Event Type <span class="required">*</span></label>
+                <select class="form-control" name="eventType" id="eventType" required>
+                  <option value="">Select Event Type</option>
+                  <option value="engagement">Engagement</option>
+                  <option value="haldi">Haldi</option>
+                  <option value="mehndi">Mehndi</option>
+                  <option value="sangeet">Sangeet</option>
+                  <option value="wedding">Wedding</option>
+                  <option value="reception">Reception</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Event Date <span class="required">*</span></label>
+                <input type="date" class="form-control" name="eventDate" id="eventDate" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Event Location <span class="required">*</span></label>
+              <input type="text" class="form-control" name="eventLocation" placeholder="e.g., Mumbai, Udaipur, Jaipur" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Number of Guests <span class="required">*</span></label>
+                <select class="form-control" name="guestCount" required>
+                  <option value="">Select Guest Count</option>
+                  <option value="50-100">50 - 100 Guests</option>
+                  <option value="100-200">100 - 200 Guests</option>
+                  <option value="200-500">200 - 500 Guests</option>
+                  <option value="500+">500+ Guests</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Approximate Budget <span class="required">*</span></label>
+                <select class="form-control" name="budget" required>
+                  <option value="">Select Budget Range</option>
+                  <option value="under-50000">Under ₹50,000</option>
+                  <option value="50000-100000">₹50,000 - ₹1,00,000</option>
+                  <option value="100000-200000">₹1,00,000 - ₹2,00,000</option>
+                  <option value="200000+">₹2,00,000+</option>
+                </select>
+              </div>
+            </div>
+            <div style="text-align:right;margin-top:12px;">
+              <button type="button" class="btn btn-gold" onclick="nextStep(2)">Continue <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Step 2: Services -->
+          <div class="booking-form-step" id="step2" style="display:none;">
+            <h3 style="margin-bottom:8px;">Select Services</h3>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">Choose the services you need for your celebration.</p>
+            <div class="checkbox-group" id="servicesGroup">
+              <label class="checkbox-item" data-service="decoration">
+                <input type="checkbox" name="services" value="decoration">
+                <span class="checkmark"></span>
+                <span><i class="fas fa-church" style="color:var(--gold);margin-right:4px;"></i> Decoration</span>
+              </label>
+              <label class="checkbox-item" data-service="catering">
+                <input type="checkbox" name="services" value="catering">
+                <span class="checkmark"></span>
+                <span><i class="fas fa-utensils" style="color:var(--gold);margin-right:4px;"></i> Catering</span>
+              </label>
+              <label class="checkbox-item" data-service="photography">
+                <input type="checkbox" name="services" value="photography">
+                <span class="checkmark"></span>
+                <span><i class="fas fa-camera" style="color:var(--gold);margin-right:4px;"></i> Photography</span>
+              </label>
+              <label class="checkbox-item" data-service="makeup">
+                <input type="checkbox" name="services" value="makeup">
+                <span class="checkmark"></span>
+                <span><i class="fas fa-spa" style="color:var(--gold);margin-right:4px;"></i> Makeup</span>
+              </label>
+              <label class="checkbox-item" data-service="dj">
+                <input type="checkbox" name="services" value="dj">
+                <span class="checkmark"></span>
+                <span><i class="fas fa-headphones" style="color:var(--gold);margin-right:4px;"></i> DJ & Music</span>
+              </label>
+              <label class="checkbox-item" data-service="venue">
+                <input type="checkbox" name="services" value="venue">
+                <span class="checkmark"></span>
+                <span><i class="fas fa-hotel" style="color:var(--gold);margin-right:4px;"></i> Venue</span>
+              </label>
+              <label class="checkbox-item" data-service="flowers">
+                <input type="checkbox" name="services" value="flowers">
+                <span class="checkmark"></span>
+                <span><i class="fas fa-seedling" style="color:var(--gold);margin-right:4px;"></i> Flowers</span>
+              </label>
+              <label class="checkbox-item" data-service="bridal-entry">
+                <input type="checkbox" name="services" value="bridal-entry">
+                <span class="checkmark"></span>
+                <span><i class="fas fa-crown" style="color:var(--gold);margin-right:4px;"></i> Bridal Entry</span>
+              </label>
+              <label class="checkbox-item" data-service="transport">
+                <input type="checkbox" name="services" value="transport">
+                <span class="checkmark"></span>
+                <span><i class="fas fa-bus" style="color:var(--gold);margin-right:4px;"></i> Transport</span>
+              </label>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:24px;">
+              <button type="button" class="btn btn-outline" onclick="prevStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
+              <button type="button" class="btn btn-gold" onclick="nextStep(3)">Continue <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Step 3: Package -->
+          <div class="booking-form-step" id="step3" style="display:none;">
+            <h3 style="margin-bottom:8px;">Choose a Package</h3>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">Select the package that best fits your celebration.</p>
+            <div class="radio-group" id="packageGroup">
+              <label class="radio-item" data-package="silver">
+                <input type="radio" name="package" value="silver">
+                <div class="radio-label">
+                  <i class="fas fa-gem" style="color:var(--gold);font-size:1.5rem;margin-bottom:8px;"></i>
+                  <h5>Silver</h5>
+                  <p class="price">₹49,999 onwards</p>
+                  <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Basic arrangements</p>
+                </div>
+              </label>
+              <label class="radio-item" data-package="gold">
+                <input type="radio" name="package" value="gold">
+                <div class="radio-label">
+                  <span class="package-badge" style="position:static;transform:none;display:inline-block;margin-bottom:8px;font-size:0.65rem;padding:4px 12px;">Popular</span>
+                  <h5>Gold</h5>
+                  <p class="price">₹99,999 onwards</p>
+                  <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Premium event</p>
+                </div>
+              </label>
+              <label class="radio-item" data-package="platinum">
+                <input type="radio" name="package" value="platinum">
+                <div class="radio-label">
+                  <i class="fas fa-star" style="color:var(--gold);font-size:1.5rem;margin-bottom:8px;"></i>
+                  <h5>Platinum</h5>
+                  <p class="price">₹1,99,999 onwards</p>
+                  <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Luxury experience</p>
+                </div>
+              </label>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:24px;">
+              <button type="button" class="btn btn-outline" onclick="prevStep(2)"><i class="fas fa-arrow-left"></i> Back</button>
+              <button type="button" class="btn btn-gold" onclick="nextStep(4)">Continue <i class="fas fa-arrow-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Step 4: Personal Info -->
+          <div class="booking-form-step" id="step4" style="display:none;">
+            <h3 style="margin-bottom:8px;">Your Information</h3>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:28px;">We'll reach out to finalize your booking.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full Name <span class="required">*</span></label>
+                <input type="text" class="form-control" name="customerName" placeholder="Enter your full name" required>
+              </div>
+              <div class="form-group">
+                <label>Mobile Number <span class="required">*</span></label>
+                <input type="tel" class="form-control" name="mobile" placeholder="+91 98765 43210" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" class="form-control" name="email" placeholder="your.email@example.com">
+            </div>
+            <div class="form-group">
+              <label>Special Requests or Notes</label>
+              <textarea class="form-control" name="notes" placeholder="Any special themes, cultural requirements, or custom requests..." rows="4"></textarea>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:12px;">
+              <button type="button" class="btn btn-outline" onclick="prevStep(3)"><i class="fas fa-arrow-left"></i> Back</button>
+              <button type="submit" class="btn btn-gold"><i class="fas fa-paper-plane"></i> Submit Booking</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-name">NAISHVI CELEBRATIONS</div>
+          <p>India's premier wedding planning company. We craft timeless celebrations with elegance, creativity, and unmatched attention to detail.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="footer-social-link"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="footer-social-link"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#events">Services</a></li>
+            <li><a href="index.html#packages">Packages</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#services">Decoration</a></li>
+            <li><a href="index.html#services">Catering</a></li>
+            <li><a href="index.html#services">Photography</a></li>
+            <li><a href="index.html#services">Makeup</a></li>
+            <li><a href="index.html#services">DJ & Music</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+91 98765 43210</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>hello@naishvicelebrations.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 <a href="index.html">Naishvi Celebrations</a>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

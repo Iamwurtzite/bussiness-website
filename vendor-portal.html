@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vendor Partner Desk | NAISHVI CELEBRATIONS</title>
+
+  <!-- Google Fonts: Playfair Display + Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .vendor-assignment-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-luxury);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div>
+        <span><i class="fa-solid fa-handshake text-gold"></i> NAISHVI CELEBRATIONS • Vendor Partner Portal</span>
+      </div>
+      <div class="top-links">
+        <a href="index.html"><i class="fa-solid fa-arrow-left"></i> Main Site</a>
+        <a href="admin.html"><i class="fa-solid fa-lock"></i> Admin Desk</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header-main">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-title">NAISHVI CELEBRATIONS</span>
+        <span class="brand-subtitle">VENDOR OPERATIONS DESK</span>
+      </a>
+
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <span class="status-badge badge-confirmed"><i class="fa-solid fa-circle text-success"></i> Partner Active</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="section-padding">
+    <div class="container">
+
+      <!-- Step 9 Intro Banner -->
+      <div style="background: rgba(104, 13, 29, 0.4); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 20px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 4px;">
+            <i class="fa-solid fa-users-gear text-gold"></i> Step 9 & 10 • Vendor Operations & Event Execution Desk
+          </h3>
+          <p style="font-size: 0.85rem; color: #eeddb0;">
+            Allocated wedding orders from the Central Admin. Partner vendors can review schedules, deliverables, guest counts, and mark arrangements ready.
+          </p>
+        </div>
+        <div style="min-width: 280px;">
+          <label style="font-size: 0.78rem; color: var(--primary-gold-light); display: block; margin-bottom: 4px;">Switch Vendor Partner View:</label>
+          <select id="vendorSelectDropdown" class="form-control" style="padding: 8px 12px;">
+            <!-- Populated via vendor.js -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Vendor Profile Info -->
+      <div id="vendorProfileCard" style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 30px;">
+        <!-- Populated via vendor.js -->
+      </div>
+
+      <!-- Assigned Orders List -->
+      <h3 style="font-size: 1.35rem; color: #fff; margin-bottom: 18px;">
+        <i class="fa-solid fa-list-check text-gold"></i> Your Assigned Wedding Orders & Tasks:
+      </h3>
+      <div id="vendorAssignmentsList">
+        <!-- Rendered via vendor.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Store & Vendor Script -->
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/vendor.js"></script>
+</body>
+</html>

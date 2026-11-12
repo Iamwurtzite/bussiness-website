@@ -1,0 +1,20 @@
+{
+  "name": "naishvi-celebrations",
+  "version": "1.0.0",
+  "description": "NAISHVI CELEBRATIONS — Premium Indian Wedding Planning Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["wedding", "planning", "indian", "celebrations"],
+  "author": "Naishvi Celebrations",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "better-sqlite3": "^9.4.3",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cors": "^2.8.5"
+  }
+}

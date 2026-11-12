@@ -1,0 +1,481 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Event & Request Quotation | NAISHVI CELEBRATIONS</title>
+  <meta name="description" content="Reserve your wedding dates with Naishvi Celebrations. Build your custom ceremony combination and receive an instant quotation.">
+
+  <!-- Google Fonts: Playfair Display + Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .booking-engine-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 44px;
+      box-shadow: var(--shadow-luxury);
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .event-pills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .event-pill-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+    }
+    .event-pill-item.selected {
+      border-color: var(--primary-gold);
+      background: rgba(212, 175, 55, 0.15);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+    }
+    .service-checkboxes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .service-checkbox-card {
+      padding: 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .service-checkbox-card.selected {
+      border-color: var(--primary-gold);
+      background: rgba(212, 175, 55, 0.12);
+    }
+    @media (max-width: 768px) {
+      .event-pills-grid,
+      .service-checkboxes-grid {
+        grid-template-columns: 1fr;
+      }
+      .booking-engine-wrapper {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div>
+        <span><i class="fa-solid fa-phone text-gold"></i> +91 9719136364</span>
+        <span style="margin-left: 20px;"><i class="fa-solid fa-envelope text-gold"></i> royal@naishvicelebrations.com</span>
+      </div>
+      <div class="top-links">
+        <a href="customer-portal.html"><i class="fa-solid fa-file-invoice"></i> Client Quotation Desk</a>
+        <a href="admin.html"><i class="fa-solid fa-lock"></i> Admin Portal</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header-main">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-title">NAISHVI CELEBRATIONS</span>
+        <span class="brand-subtitle">WEDDINGS • EVENTS • DESTINATIONS</span>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta-group">
+        <a href="booking.html" class="btn btn-gold btn-sm active">
+          <i class="fa-solid fa-calendar-check"></i> Book Event
+        </a>
+        <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Subpage Hero -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-overlay"></div>
+    <div class="container">
+      <div class="subpage-hero-content">
+        <span class="hero-badge"><i class="fa-solid fa-calendar-check"></i> Instant Booking & Quotation Engine</span>
+        <h1 class="subpage-title">Book Your Wedding Event</h1>
+        <p class="subpage-desc">
+          Customize your ceremonial events, select desired services, and submit your booking to receive an immediate formal quotation from our master planners.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Booking Form Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="booking-engine-wrapper">
+        <form id="weddingWizardForm">
+          <!-- Section 1: Event Selection -->
+          <div style="margin-bottom: 36px;">
+            <h3 style="font-size: 1.4rem; color: #eeddb0; margin-bottom: 8px;">
+              <span class="gold-gradient-text">1.</span> Select Your Ceremonial Events
+            </h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">
+              Select one or multiple ceremonies you wish Naishvi Celebrations to orchestrate:
+            </p>
+            <div class="event-pills-grid">
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Engagement">
+                <div>
+                  <strong>Engagement Ceremony</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Ring ceremony & floral stage</div>
+                </div>
+              </label>
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Haldi">
+                <div>
+                  <strong>Haldi Celebration</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Marigold decor & brass urli</div>
+                </div>
+              </label>
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Mehndi">
+                <div>
+                  <strong>Mehndi Night</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Henna artists & carnival stalls</div>
+                </div>
+              </label>
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Sangeet">
+                <div>
+                  <strong>Sangeet Evening</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Concert sound, LED & DJ</div>
+                </div>
+              </label>
+              <label class="event-pill-item selected">
+                <input type="checkbox" class="event-pill-checkbox" value="Wedding" checked>
+                <div>
+                  <strong>Sacred Wedding</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Royal mandap & baraat entry</div>
+                </div>
+              </label>
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Reception">
+                <div>
+                  <strong>Imperial Reception</strong>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Grand feast & banquet stage</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Section 2: Services Selection -->
+          <div style="margin-bottom: 36px;">
+            <h3 style="font-size: 1.4rem; color: #eeddb0; margin-bottom: 8px;">
+              <span class="gold-gradient-text">2.</span> Select Desired Services
+            </h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">
+              Choose the specialized capabilities you need us to provide:
+            </p>
+            <div class="service-checkboxes-grid">
+              <label class="service-checkbox-card selected">
+                <input type="checkbox" class="service-checkbox-input" value="Wedding Decoration" checked>
+                <div>
+                  <strong>Wedding Decoration</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">Theme mandap & stage lighting</div>
+                </div>
+              </label>
+              <label class="service-checkbox-card selected">
+                <input type="checkbox" class="service-checkbox-input" value="Catering & Feasts" checked>
+                <div>
+                  <strong>Catering & Feasts</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">Multi-cuisine luxury royal buffet</div>
+                </div>
+              </label>
+              <label class="service-checkbox-card selected">
+                <input type="checkbox" class="service-checkbox-input" value="Photography & Cinema" checked>
+                <div>
+                  <strong>Photography & Cinema</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">Candid, 4K film & aerial drone</div>
+                </div>
+              </label>
+              <label class="service-checkbox-card">
+                <input type="checkbox" class="service-checkbox-input" value="Bridal Makeup & Styling">
+                <div>
+                  <strong>Bridal Makeup & Styling</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">HD airbrush & hair artistry</div>
+                </div>
+              </label>
+              <label class="service-checkbox-card selected">
+                <input type="checkbox" class="service-checkbox-input" value="DJ & Sound / Music" checked>
+                <div>
+                  <strong>DJ, Sound & Lights</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">Line array & intelligent truss</div>
+                </div>
+              </label>
+              <label class="service-checkbox-card">
+                <input type="checkbox" class="service-checkbox-input" value="Venue Booking & Negotiation">
+                <div>
+                  <strong>Venue Booking</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">Palaces, resorts & banquet spaces</div>
+                </div>
+              </label>
+              <label class="service-checkbox-card">
+                <input type="checkbox" class="service-checkbox-input" value="Exotic Flower Decoration">
+                <div>
+                  <strong>Flower Decoration</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">Imported roses & fresh florals</div>
+                </div>
+              </label>
+              <label class="service-checkbox-card">
+                <input type="checkbox" class="service-checkbox-input" value="Bridal Entry & Special Effects">
+                <div>
+                  <strong>Bridal Entry & FX</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">Cold pyro & cloud fog entry</div>
+                </div>
+              </label>
+              <label class="service-checkbox-card">
+                <input type="checkbox" class="service-checkbox-input" value="Guest Transportation & Logistics">
+                <div>
+                  <strong>Guest Transportation</strong>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">Vintage baraat cars & coaches</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Section 3: Package Tier Preference -->
+          <div style="margin-bottom: 36px;">
+            <h3 style="font-size: 1.4rem; color: #eeddb0; margin-bottom: 8px;">
+              <span class="gold-gradient-text">3.</span> Preferred Package Tier
+            </h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 18px;">
+              Choose the baseline package tier that best aligns with your vision:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+              <div class="package-card" style="padding: 24px;">
+                <label style="cursor: pointer;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                    <h4 style="color: #fff; font-size: 1.25rem;">Silver Package</h4>
+                    <input type="radio" name="selectedPackageRadio" value="silver" style="accent-color: var(--primary-gold); transform: scale(1.3);">
+                  </div>
+                  <div style="font-size: 1.6rem; font-weight: 700; color: var(--primary-gold-light); margin-bottom: 6px;">₹49,999 <span style="font-size: 0.8rem; font-weight: 400; color: #a0a5b5;">onwards</span></div>
+                  <p style="font-size: 0.82rem; color: var(--text-muted);">Essential arrangements for single events.</p>
+                </label>
+              </div>
+
+              <div class="package-card popular" style="padding: 24px;">
+                <div class="popular-badge" style="top: -12px;">Popular</div>
+                <label style="cursor: pointer;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                    <h4 style="color: #fff; font-size: 1.25rem;">Gold Package</h4>
+                    <input type="radio" name="selectedPackageRadio" value="gold" checked style="accent-color: var(--primary-gold); transform: scale(1.3);">
+                  </div>
+                  <div style="font-size: 1.6rem; font-weight: 700; color: var(--primary-gold-light); margin-bottom: 6px;">₹99,999 <span style="font-size: 0.8rem; font-weight: 400; color: #a0a5b5;">onwards</span></div>
+                  <p style="font-size: 0.82rem; color: #d1d5db;">Premium decoration and multi-event management.</p>
+                </label>
+              </div>
+
+              <div class="package-card" style="padding: 24px;">
+                <label style="cursor: pointer;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+                    <h4 style="color: #fff; font-size: 1.25rem;">Platinum Package</h4>
+                    <input type="radio" name="selectedPackageRadio" value="platinum" style="accent-color: var(--primary-gold); transform: scale(1.3);">
+                  </div>
+                  <div style="font-size: 1.6rem; font-weight: 700; color: var(--primary-gold-light); margin-bottom: 6px;">₹1,99,999 <span style="font-size: 0.8rem; font-weight: 400; color: #a0a5b5;">onwards</span></div>
+                  <p style="font-size: 0.82rem; color: var(--text-muted);">Royal bespoke luxury wedding extravaganza.</p>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Customer & Venue Details -->
+          <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 32px; margin-bottom: 28px;">
+            <h3 style="font-size: 1.4rem; color: #eeddb0; margin-bottom: 8px;">
+              <span class="gold-gradient-text">4.</span> Your Contact & Event Information
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;">
+              Provide your wedding dates and location to receive your itemized quotation:
+            </p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="custName">Customer Full Name *</label>
+                <input type="text" id="custName" class="form-control" placeholder="Enter your full name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="custMobile">WhatsApp Mobile Number *</label>
+                <input type="tel" id="custMobile" class="form-control" placeholder="Enter 10-digit mobile number" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="custEmail">Email Address (Optional)</label>
+                <input type="email" id="custEmail" class="form-control" placeholder="For receiving quotation & invoice PDFs">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="custDate">Wedding / Event Date *</label>
+                <input type="date" id="custDate" class="form-control" required value="2026-12-25">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="custLocation">Wedding City or Destination Venue *</label>
+                <input type="text" id="custLocation" class="form-control" placeholder="e.g. Taj Jai Mahal Palace, Jaipur" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="custGuests">Estimated Number of Guests *</label>
+                <select id="custGuests" class="form-control">
+                  <option value="50-100">50 - 100 Guests (Intimate Gathering)</option>
+                  <option value="100-250">100 - 250 Guests (Standard Celebration)</option>
+                  <option value="250-500" selected>250 - 500 Guests (Grand Wedding)</option>
+                  <option value="500-1000">500 - 1,000 Guests (Royal Nuptials)</option>
+                  <option value="1000+">1,000+ Guests (Mega Matrimonial Event)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="custBudget">Approximate Overall Budget *</label>
+                <select id="custBudget" class="form-control">
+                  <option value="₹49,999 - ₹1,00,000">₹49,999 - ₹1,00,000 (Silver tier)</option>
+                  <option value="₹1,00,000 - ₹2,00,000" selected>₹1,00,000 - ₹2,00,000 (Gold tier)</option>
+                  <option value="₹2,00,000 - ₹5,00,000">₹2,00,000 - ₹5,00,000 (Platinum tier)</option>
+                  <option value="₹5,00,000+">₹5,00,000+ (Royal Destination Bespoke)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="custNotes">Special Preferences or Instructions</label>
+                <input type="text" id="custNotes" class="form-control" placeholder="e.g. Royal Rajputana mandap with gold and ivory florals">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-lg" style="width: 100%; margin-top: 10px; font-size: 1.15rem;">
+              <i class="fa-solid fa-paper-plane"></i> Submit Booking & Receive Official Quotation
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Success Modal -->
+  <div class="modal-backdrop" id="bookingSuccessModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeModal('bookingSuccessModal')" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="bookingSuccessBody"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <span class="brand-title">NAISHVI CELEBRATIONS</span>
+            <span class="brand-subtitle">WEDDINGS • EVENTS • DESTINATIONS</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            India’s premier wedding planning architects turning lifelong dreams into royal reality.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="events.html">Ceremonies</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="packages.html">Packages</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Client Access</h4>
+          <ul class="footer-links">
+            <li><a href="customer-portal.html">Quotation Desk</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+            <li><a href="vendor-portal.html">Vendor Desk</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Desk</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px;">
+            <i class="fa-solid fa-phone text-gold"></i> +91 9719136364
+          </p>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            <i class="fa-solid fa-envelope text-gold"></i> royal@naishvicelebrations.com
+          </p>
+        </div>
+      </div>
+      <div class="copyright-bar">
+        <div>© 2026 NAISHVI CELEBRATIONS. All Rights Reserved.</div>
+        <div>Luxury Wedding Architecture & Event Management.</div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://api.whatsapp.com/send?phone=919719136364" target="_blank" class="whatsapp-floating" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Handle URL parameters for pre-selected packages or events
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const pkg = urlParams.get('package');
+      const evt = urlParams.get('event');
+
+      if (pkg) {
+        const radio = document.querySelector(`input[name="selectedPackageRadio"][value="${pkg}"]`);
+        if (radio) radio.checked = true;
+      }
+      if (evt) {
+        const chk = document.querySelector(`.event-pill-checkbox[value="${evt}"]`);
+        if (chk) {
+          chk.checked = true;
+          chk.closest('.event-pill-item')?.classList.add('selected');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
