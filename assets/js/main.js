@@ -4,6 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
+  initNavDropdown();
   initBookingWizard();
   initQuickBookingForm();
   renderEvents();
@@ -11,6 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
   renderPackages();
   renderReviews();
 });
+
+// Dropdown Toggle (3-Dots More Options)
+function initNavDropdown() {
+  const dropdown = document.getElementById('navMoreDropdown');
+  const dotsBtn = document.getElementById('navDotsBtn');
+  if (dropdown && dotsBtn) {
+    dotsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+  }
+}
 
 // Mobile Menu Toggle
 function initMobileMenu() {
