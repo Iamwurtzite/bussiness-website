@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Ceremonies & Events | NAISHVI CELEBRATIONS</title>
-  <meta name="description" content="Explore our bespoke ceremonial planning: Engagement, Haldi, Mehndi, Sangeet, Royal Mandap Wedding, and Grand Reception.">
+  <title>Wedding & Ceremonial Events | NAISHVI CELEBRATIONS</title>
+  <meta name="description" content="Explore our complete event portfolio: Engagement, Roka, Haldi, Mehndi, Sangeet, Cocktail, Wedding, Reception, Mata Ki Chowki, Jagran, Birthdays, and Corporate Galas.">
 
   <!-- Google Fonts: Playfair Display + Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,125 @@
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    /* 4-Option Event Card (Matching User Image 3 Specification) */
+    .event-card-v2 {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      box-shadow: var(--shadow-luxury);
+    }
+    .event-card-v2:hover {
+      border-color: var(--primary-gold-light);
+      transform: translateY(-6px);
+    }
+    .event-card-img-wrap {
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+    }
+    .event-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .event-card-v2:hover .event-card-img-wrap img {
+      transform: scale(1.08);
+    }
+    .event-card-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(104, 13, 29, 0.9);
+      border: 1px solid var(--primary-gold);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .event-card-body-v2 {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+    .event-options-box {
+      background: #0f1117;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-top: 18px;
+    }
+    .event-option-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: #d1d5db;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .event-option-link:hover {
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--primary-gold-light);
+      padding-left: 22px;
+    }
+    .event-option-link i {
+      color: var(--primary-gold);
+      font-size: 0.95rem;
+    }
+    .btn-book-event-v2 {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      background: var(--gold-gradient);
+      color: #0b0c10;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-book-event-v2:hover {
+      background: #f3e5ab;
+      color: #000;
+      box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
+    }
+    .filter-btn-pill {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+    .filter-btn-pill.active,
+    .filter-btn-pill:hover {
+      background: var(--primary-gold);
+      color: #000;
+      border-color: var(--primary-gold);
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 
@@ -24,10 +143,10 @@
     <div class="container">
       <div>
         <span><i class="fa-solid fa-phone text-gold"></i> +91 9719136364</span>
-        <span style="margin-left: 20px;"><i class="fa-solid fa-envelope text-gold"></i> royal@naishvicelebrations.com</span>
+        <span style="margin-left: 20px;"><i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, Uttar Pradesh</span>
       </div>
       <div class="top-links">
-        <a href="customer-portal.html"><i class="fa-solid fa-file-invoice"></i> Client Quotation Desk</a>
+        <a href="customer-dashboard.html"><i class="fa-solid fa-user-check"></i> Customer Dashboard</a>
         <a href="admin.html"><i class="fa-solid fa-lock"></i> Admin Portal</a>
       </div>
     </div>
@@ -43,12 +162,12 @@
 
       <ul class="nav-menu" id="navMenu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
         <li><a href="events.html" class="active">Events</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html">18 Services</a></li>
         <li><a href="packages.html">Packages</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="venues.html">Agra Venues</a></li>
+        <li><a href="pandit-services.html">Pandit Ji & Pooja</a></li>
+        <li><a href="budget-calculator.html">Budget Calculator</a></li>
       </ul>
 
       <div class="nav-cta-group">
@@ -67,142 +186,93 @@
     <div class="subpage-hero-overlay"></div>
     <div class="container">
       <div class="subpage-hero-content">
-        <span class="hero-badge"><i class="fa-solid fa-crown"></i> Sacred Traditions & Festivities</span>
-        <h1 class="subpage-title">Ceremonial Celebrations</h1>
+        <span class="hero-badge"><i class="fa-solid fa-crown"></i> Complete Celebratory Spectrum</span>
+        <h1 class="subpage-title">Weddings & Ceremonial Events</h1>
         <p class="subpage-desc">
-          From intimate auspicious blessings to high-energy celebratory nights, discover how Naishvi Celebrations designs each distinct ceremony.
+          From intimate Roka and vibrant Haldi to sacred royal weddings, Mata Ki Chowki, and prestigious corporate galas in Agra.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Events Grid -->
+  <!-- Events Showcase with 4 Options on Every Card -->
   <section class="section-padding">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Auspicious Milestones</span>
-        <h2 class="section-title">The Six Sacred Wedding Ceremonies</h2>
+        <span class="section-tag">Curated Functions</span>
+        <h2 class="section-title">Select Your Event To Explore Options</h2>
         <p class="section-desc">
-          Plan individual ceremonial functions or combine them into an unforgettable multi-day celebration.
+          Every event card includes View Details, View Packages, Check Availability, and 1-Click Instant Booking.
         </p>
       </div>
 
-      <div class="events-grid">
-        <!-- Event 1: Engagement -->
-        <div class="event-card" onclick="window.location.href='booking.html?event=Engagement'">
-          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Engagement Ceremony">
-          <div class="event-card-overlay">
-            <span class="event-badge">Ring Ceremony</span>
-            <h3 class="event-title">The Royal Engagement</h3>
-            <p class="event-tagline">The Beautiful Beginning of Forever</p>
-            <p class="event-details">
-              Elegant ring exchange stages, romantic pastel florals, champagne toast setups, and fairy light canopies for an intimate beginning.
-            </p>
-            <div class="event-select-trigger">
-              <span>Plan This Ceremony</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Event 2: Haldi -->
-        <div class="event-card" onclick="window.location.href='booking.html?event=Haldi'">
-          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="Haldi Celebration">
-          <div class="event-card-overlay">
-            <span class="event-badge">Sunshine Blessings</span>
-            <h3 class="event-title">The Vibrant Haldi</h3>
-            <p class="event-tagline">Colors of Joy & Auspicious Warmth</p>
-            <p class="event-details">
-              Authentic brass urli baths, yellow marigold draping, floral shower petals, and folk music ensembles creating joyous memories.
-            </p>
-            <div class="event-select-trigger">
-              <span>Plan This Ceremony</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Event 3: Mehndi -->
-        <div class="event-card" onclick="window.location.href='booking.html?event=Mehndi'">
-          <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?auto=format&fit=crop&w=800&q=80" alt="Mehndi Celebration">
-          <div class="event-card-overlay">
-            <span class="event-badge">Intricate Henna</span>
-            <h3 class="event-title">The Festive Mehndi</h3>
-            <p class="event-tagline">Intricate Henna & Vibrant Carnival Vibes</p>
-            <p class="event-details">
-              Bohemian canopies, customized decorated swings, live bangle-making stalls, and master henna artists for the bridal party.
-            </p>
-            <div class="event-select-trigger">
-              <span>Plan This Ceremony</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Event 4: Sangeet -->
-        <div class="event-card" onclick="window.location.href='booking.html?event=Sangeet'">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Sangeet Night">
-          <div class="event-card-overlay">
-            <span class="event-badge">Musical Extravaganza</span>
-            <h3 class="event-title">The Grand Sangeet</h3>
-            <p class="event-tagline">Glitz, Glamour & High-Energy Beats</p>
-            <p class="event-details">
-              Concert-grade LED staging, dynamic intelligent lighting, cold pyro effects, choreography coordination, and celebrity DJs.
-            </p>
-            <div class="event-select-trigger">
-              <span>Plan This Ceremony</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Event 5: Wedding -->
-        <div class="event-card" onclick="window.location.href='booking.html?event=Wedding'">
-          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Royal Wedding Mandap">
-          <div class="event-card-overlay">
-            <span class="event-badge">Sacred Nuptials</span>
-            <h3 class="event-title">The Sacred Wedding</h3>
-            <p class="event-tagline">Royal Vows & Majestic Mandap Architecture</p>
-            <p class="event-details">
-              Regal baraat procession, grand varmala hydraulic entry, sacred floral mandap, Vedic rituals, and flawless ceremonial orchestration.
-            </p>
-            <div class="event-select-trigger">
-              <span>Plan This Ceremony</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Event 6: Reception -->
-        <div class="event-card" onclick="window.location.href='booking.html?event=Reception'">
-          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Reception Banquet">
-          <div class="event-card-overlay">
-            <span class="event-badge">Grand Banquet</span>
-            <h3 class="event-title">The Imperial Reception</h3>
-            <p class="event-tagline">Grand Elegance & Luxurious Hospitality</p>
-            <p class="event-details">
-              Crystal chandelier backdrops, multi-course royal culinary feast, red carpet guest welcome, and dignified family receiving lines.
-            </p>
-            <div class="event-select-trigger">
-              <span>Plan This Ceremony</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </div>
-          </div>
-        </div>
+      <!-- Category Filter Pills -->
+      <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 40px;">
+        <button class="filter-btn-pill active" onclick="filterEvents('all', this)">All Celebrations</button>
+        <button class="filter-btn-pill" onclick="filterEvents('Pre-Wedding', this)">Pre-Wedding</button>
+        <button class="filter-btn-pill" onclick="filterEvents('Main Ceremony', this)">Weddings</button>
+        <button class="filter-btn-pill" onclick="filterEvents('Celebration', this)">Sangeet & Cocktail</button>
+        <button class="filter-btn-pill" onclick="filterEvents('Devotional & Religious', this)">Mata Ki Chowki & Jagran</button>
+        <button class="filter-btn-pill" onclick="filterEvents('Private Parties', this)">Birthdays & Anniversaries</button>
+        <button class="filter-btn-pill" onclick="filterEvents('Corporate Events', this)">Corporate</button>
       </div>
 
-      <!-- Action Banner -->
-      <div style="margin-top: 60px; background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 48px; text-align: center; box-shadow: var(--shadow-luxury);">
-        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 12px;">Planning Single or Multiple Ceremonies?</h3>
-        <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 28px;">
-          Naishvi Celebrations handles multi-day wedding sequences with unified theme coordination across all venues.
-        </p>
-        <a href="booking.html" class="btn btn-gold btn-lg">
-          <i class="fa-solid fa-calendar-plus"></i> Select Your Ceremonies in Booking Engine
-        </a>
+      <!-- Events Grid -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;" id="allEventsGrid">
+        <!-- Injected via script from store.js -->
       </div>
     </div>
   </section>
+
+  <!-- Modal 1: Event Details Modal -->
+  <div class="modal-backdrop" id="eventDetailsModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeModal('eventDetailsModal')" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="eventDetailsModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Check Availability Modal (Feature 4 from Image 1 & 2) -->
+  <div class="modal-backdrop" id="dateAvailabilityModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeModal('dateAvailabilityModal')" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 22px;">
+        <div style="width: 58px; height: 58px; border-radius: 50%; background: rgba(212, 175, 55, 0.12); border: 2px solid var(--primary-gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; color: var(--primary-gold); font-size: 24px;">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 4px;">Check Date Availability in Agra</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);" id="availEventNameTitle">Checking for: Sacred Royal Wedding</p>
+      </div>
+
+      <form id="checkDateForm">
+        <div class="form-group">
+          <label class="form-label">Preferred Event Date *</label>
+          <input type="date" id="availDateInput" class="form-control" required value="2026-12-18">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Event City / Destination</label>
+          <input type="text" id="availLocationInput" class="form-control" value="Shahdra, Agra (or surrounding banquet/hotel)" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Your WhatsApp Mobile Number *</label>
+          <input type="tel" id="availPhoneInput" class="form-control" placeholder="10-digit mobile number" required value="9719136364">
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-lg" style="width: 100%;">
+          <i class="fa-solid fa-bolt"></i> Check Live Date Status
+        </button>
+
+        <div id="availResultBox" style="display: none; margin-top: 18px; padding: 16px; border-radius: var(--radius-md); text-align: center;"></div>
+      </form>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer-main">
@@ -218,37 +288,34 @@
           </p>
         </div>
         <div class="footer-col">
-          <h4>Navigation</h4>
+          <h4>Events & Functions</h4>
           <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="events.html">Ceremonies</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="packages.html">Packages</a></li>
+            <li><a href="events.html">Royal Weddings</a></li>
+            <li><a href="events.html">Sangeet & Cocktails</a></li>
+            <li><a href="events.html">Mata Ki Chowki & Jagran</a></li>
+            <li><a href="events.html">Birthdays & Anniversaries</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Client Portals</h4>
+          <h4>Client Access</h4>
           <ul class="footer-links">
             <li><a href="booking.html">Book Event</a></li>
-            <li><a href="customer-portal.html">Quotation & Payment</a></li>
-            <li><a href="admin.html">Admin Dashboard</a></li>
-            <li><a href="vendor-portal.html">Vendor Desk</a></li>
+            <li><a href="customer-dashboard.html">Customer Dashboard</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Contact Desk</h4>
+          <h4>Agra Office</h4>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px;">
-            <i class="fa-solid fa-phone text-gold"></i> +91 9719136364
+            <i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, UP
           </p>
           <p style="font-size: 0.88rem; color: var(--text-muted);">
-            <i class="fa-solid fa-envelope text-gold"></i> royal@naishvicelebrations.com
+            <i class="fa-solid fa-phone text-gold"></i> +91 9719136364
           </p>
         </div>
       </div>
       <div class="copyright-bar">
         <div>© 2026 NAISHVI CELEBRATIONS. All Rights Reserved.</div>
-        <div>Luxury Wedding Architecture & Event Management.</div>
       </div>
     </div>
   </footer>
@@ -259,9 +326,138 @@
 
   <script src="assets/js/store.js"></script>
   <script>
-    document.getElementById('mobileToggleBtn')?.addEventListener('click', () => {
-      document.getElementById('navMenu')?.classList.toggle('open');
+    let activeEventForCheck = 'Royal Wedding';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderEventsGrid('all');
+
+      document.getElementById('mobileToggleBtn')?.addEventListener('click', () => {
+        document.getElementById('navMenu')?.classList.toggle('open');
+      });
+
+      // Handle Date Checker Form
+      document.getElementById('checkDateForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const dateVal = document.getElementById('availDateInput').value;
+        const phoneVal = document.getElementById('availPhoneInput').value;
+        const locVal = document.getElementById('availLocationInput').value;
+        const resultBox = document.getElementById('availResultBox');
+
+        resultBox.style.display = 'block';
+        resultBox.style.background = 'rgba(34, 197, 94, 0.15)';
+        resultBox.style.border = '1px solid #22c55e';
+        resultBox.innerHTML = `
+          <h4 style="color: #4ade80; font-size: 1.15rem; margin-bottom: 4px;">
+            <i class="fa-solid fa-circle-check"></i> Date Available for ${activeEventForCheck}!
+          </h4>
+          <p style="font-size: 0.85rem; color: #d1d5db; margin-bottom: 14px;">
+            ${dateVal} is an auspicious muhurat date with active planner slots open in Agra.
+          </p>
+          <div style="display: flex; gap: 8px; justify-content: center;">
+            <a href="booking.html?event=${encodeURIComponent(activeEventForCheck)}&date=${dateVal}&location=${encodeURIComponent(locVal)}" class="btn btn-gold btn-sm">
+              <i class="fa-solid fa-calendar-check"></i> Proceed With Booking
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=919719136364&text=${encodeURIComponent(`Namaste Naishvi Celebrations! I checked availability for ${activeEventForCheck} on ${dateVal} in ${locVal}. Please reserve this date.`)}" target="_blank" class="btn btn-outline-gold btn-sm">
+              <i class="fa-brands fa-whatsapp text-success"></i> Lock On WhatsApp
+            </a>
+          </div>
+        `;
+      });
     });
+
+    function renderEventsGrid(filterCategory = 'all') {
+      const container = document.getElementById('allEventsGrid');
+      if (!container || !window.ncStore) return;
+
+      let list = window.ncStore.getEvents();
+      if (filterCategory !== 'all') {
+        list = list.filter(e => e.category === filterCategory);
+      }
+
+      container.innerHTML = list.map(evt => `
+        <div class="event-card-v2">
+          <div class="event-card-img-wrap">
+            <img src="${evt.image}" alt="${evt.name}" loading="lazy">
+            <span class="event-card-tag">${evt.category} • Agra</span>
+          </div>
+          <div class="event-card-body-v2">
+            <div>
+              <h3 style="font-size: 1.4rem; color: #fff; margin-bottom: 4px;">${evt.name}</h3>
+              <p style="font-size: 0.85rem; color: var(--primary-gold-light); margin-bottom: 8px;">${evt.tagline}</p>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">${evt.description}</p>
+            </div>
+
+            <!-- The Exact 4 Options from User Image 3 -->
+            <div class="event-options-box">
+              <a class="event-option-link" onclick="openEventDetails('${evt.id}')">
+                <span>View Details</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a class="event-option-link" href="packages.html?event=${encodeURIComponent(evt.name)}">
+                <span>View Packages</span>
+                <i class="fa-solid fa-box-open"></i>
+              </a>
+              <a class="event-option-link" onclick="openAvailabilityChecker('${evt.name}')">
+                <span>Check Availability</span>
+                <i class="fa-solid fa-calendar-day"></i>
+              </a>
+              <a href="booking.html?event=${encodeURIComponent(evt.name)}" class="btn-book-event-v2">
+                <i class="fa-solid fa-gem"></i> BOOK THIS EVENT
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterEvents(cat, btn) {
+      document.querySelectorAll('.filter-btn-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderEventsGrid(cat);
+    }
+
+    function openEventDetails(eventId) {
+      const modal = document.getElementById('eventDetailsModal');
+      const body = document.getElementById('eventDetailsModalBody');
+      const evt = window.ncStore.getEvents().find(e => e.id === eventId);
+      if (!modal || !body || !evt) return;
+
+      body.innerHTML = `
+        <div style="text-align: center; margin-bottom: 20px;">
+          <img src="${evt.image}" alt="${evt.name}" style="width: 100%; height: 220px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 16px; border: 1px solid var(--border-gold);">
+          <span class="status-badge badge-confirmed" style="background: rgba(212,175,55,0.15); color: var(--primary-gold-light); border-color: var(--border-gold);">${evt.category}</span>
+          <h2 style="font-size: 1.8rem; color: #fff; margin-top: 8px;">${evt.name}</h2>
+          <p style="color: var(--primary-gold-light); font-size: 0.95rem;">${evt.tagline}</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 18px; margin-bottom: 20px; font-size: 0.88rem; line-height: 1.7; color: #d1d5db;">
+          <div><i class="fa-solid fa-circle-check text-gold"></i> <strong>Full Production Scope:</strong> ${evt.description}</div>
+          <div><i class="fa-solid fa-circle-check text-gold"></i> <strong>Location:</strong> Any venue across Agra (Shahdra, Fatehabad Rd, Taj Ganj) & Destinations</div>
+          <div><i class="fa-solid fa-circle-check text-gold"></i> <strong>Estimated Starting Cost:</strong> ₹${evt.basePrice.toLocaleString('en-IN')}</div>
+          <div><i class="fa-solid fa-circle-check text-gold"></i> <strong>Included In Packages:</strong> ${evt.packagesAvailable.join(', ')}</div>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <a href="booking.html?event=${encodeURIComponent(evt.name)}" class="btn btn-gold btn-lg" style="flex-grow: 1;">
+            <i class="fa-solid fa-calendar-check"></i> Book This Event
+          </a>
+          <button class="btn btn-outline-gold" onclick="closeModal('eventDetailsModal')">Close</button>
+        </div>
+      `;
+
+      modal.classList.add('open');
+    }
+
+    function openAvailabilityChecker(eventName) {
+      activeEventForCheck = eventName;
+      document.getElementById('availEventNameTitle').textContent = `Checking availability for: ${eventName}`;
+      document.getElementById('availResultBox').style.display = 'none';
+      document.getElementById('dateAvailabilityModal')?.classList.add('open');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id)?.classList.remove('open');
+    }
   </script>
 </body>
 </html>

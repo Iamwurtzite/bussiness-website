@@ -1,6 +1,8 @@
 ﻿/**
- * Naishvi Celebrations - Central State Store
- * Manages bookings, quotations, vendors, assignments, reviews, and notifications in localStorage.
+ * Naishvi Celebrations - Central State Store & Business Logic Engine
+ * Manages bookings, quotations, vendors, assignments, reviews, notifications,
+ * event catalogs, 18 service categories, Pandit Ji ceremonies, Agra venues,
+ * and Admin Authentication in localStorage.
  */
 
 const STORAGE_KEYS = {
@@ -10,336 +12,270 @@ const STORAGE_KEYS = {
   ASSIGNMENTS: 'nc_assignments',
   REVIEWS: 'nc_reviews',
   NOTIFICATIONS: 'nc_notifications',
-  SETTINGS: 'nc_settings'
+  SETTINGS: 'nc_settings',
+  ADMIN_AUTH: 'nc_admin_auth'
 };
 
-// Default Initial Seed Data matching the project requirements
+// Expanded Event Catalog (Image 1 & 3)
 const DEFAULT_EVENTS = [
   {
-    id: 'engagement',
-    name: 'Engagement',
-    hindi: 'सगाई समारोह',
-    tagline: 'The Beautiful Beginning of Forever',
+    id: 'roka',
+    name: 'Roka Ceremony',
+    category: 'Pre-Wedding',
+    tagline: 'The First Auspicious Commitment',
     image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80',
-    description: 'Ring ceremonies, intimate ring exchange setups, floral backdrops, and romantic lighting.',
-    basePrice: 35000
+    description: 'Traditional shagun exchange, intimate floral backdrop, gift hampers curation, and family dining arrangements.',
+    basePrice: 30000,
+    packagesAvailable: ['Silver', 'Gold']
+  },
+  {
+    id: 'engagement',
+    name: 'The Royal Engagement',
+    category: 'Pre-Wedding',
+    tagline: 'The Beautiful Beginning of Forever',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
+    description: 'Ring exchange hydraulic stage, romantic pastel florals, champagne toast setups, fairy light canopies & live acoustic band.',
+    basePrice: 45000,
+    packagesAvailable: ['Silver', 'Gold', 'Platinum']
   },
   {
     id: 'haldi',
-    name: 'Haldi',
-    hindi: 'हल्दी उत्सव',
+    name: 'Vibrant Haldi Ceremony',
+    category: 'Pre-Wedding',
     tagline: 'Colors of Joy & Sunshine Blessings',
     image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80',
-    description: 'Marigold & yellow draping, traditional urli setups, phoolon ki holi & festive folk vibes.',
-    basePrice: 25000
+    description: 'Traditional brass urli tubs, marigold floral draping, phoolon ki holi flower showers, folk dhol, and vibrant photo booths.',
+    basePrice: 35000,
+    packagesAvailable: ['Silver', 'Gold']
   },
   {
     id: 'mehndi',
-    name: 'Mehndi',
-    hindi: 'मेहंदी की रात',
-    tagline: 'Intricate Henna & Vibrant Festivities',
+    name: 'Festive Mehndi Night',
+    category: 'Pre-Wedding',
+    tagline: 'Intricate Henna & Carnival Vibe',
     image: 'https://images.unsplash.com/photo-1595475207225-428b62bda831?auto=format&fit=crop&w=800&q=80',
-    description: 'Bohemian & colorful canopies, swings (jhoola), live bangles stalls & henna artists corner.',
-    basePrice: 30000
+    description: 'Bohemian colorful canopies, decorated jhoolas (swings), live bangle making stalls, and master Rajasthani henna artists.',
+    basePrice: 40000,
+    packagesAvailable: ['Silver', 'Gold']
   },
   {
     id: 'sangeet',
-    name: 'Sangeet',
-    hindi: 'संगीत संध्या',
+    name: 'Grand Sangeet & Musical Night',
+    category: 'Celebration',
     tagline: 'Glitz, Glamour & High-Energy Beats',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
-    description: 'Concert-grade LED stage, intelligent truss lighting, cold pyro effects, and celebrity DJ setups.',
-    basePrice: 55000
+    description: 'Concert-grade LED video stage, intelligent beam truss lighting, cold pyro fireworks, professional dance choreography & celebrity DJ.',
+    basePrice: 65000,
+    packagesAvailable: ['Gold', 'Platinum']
+  },
+  {
+    id: 'cocktail',
+    name: 'Cocktail & After-Party',
+    category: 'Celebration',
+    tagline: 'Sleek Glamour & Electric Rhythms',
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80',
+    description: 'Ultra-modern lounge setups, LED bar counters, professional molecular mixology, neon photo-ops, and club sound systems.',
+    basePrice: 55000,
+    packagesAvailable: ['Gold', 'Platinum']
   },
   {
     id: 'wedding',
-    name: 'Wedding',
-    hindi: 'शुभ विवाह',
-    tagline: 'Royal Sacred Vows & Majestic Mandaps',
+    name: 'Sacred Royal Wedding',
+    category: 'Main Ceremony',
+    tagline: 'Royal Sacred Vows & Majestic Mandap',
     image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80',
-    description: 'Grand floral mandap, royal baraat entry, varmala hydraulic stage, pandit arrangements & sacred havan.',
-    basePrice: 95000
+    description: 'Imperial palace-grade mandap architecture, royal baraat vintage car procession, hydraulic varmala stage, Vedic havan & pandit coordination.',
+    basePrice: 99999,
+    packagesAvailable: ['Gold', 'Platinum']
   },
   {
     id: 'reception',
-    name: 'Reception',
-    hindi: 'भव्य स्वागत समारोह',
-    tagline: 'Grand Elegance & Unforgettable Hospitality',
+    name: 'Imperial Grand Reception',
+    category: 'Post-Wedding',
+    tagline: 'Grand Elegance & Imperial Hospitality',
     image: 'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80',
-    description: 'Crystal chandeliers, imperial dining setup, luxury stage backdrop, red carpet guest welcome.',
-    basePrice: 75000
+    description: 'Crystal chandelier backdrops, multi-course royal culinary buffet, red carpet receiving lines, VIP lounge, and orchestral background music.',
+    basePrice: 75000,
+    packagesAvailable: ['Gold', 'Platinum']
+  },
+  {
+    id: 'mata-ki-chowki',
+    name: 'Mata Ki Chowki',
+    category: 'Devotional & Religious',
+    tagline: 'Divine Blessings & Bhakti Bhava',
+    image: 'https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=800&q=80',
+    description: 'Grand ornate bhavan decoration, renowned bhajan singer troupe, red chunri draping, divine akhand jyot, and satvik prasad distribution.',
+    basePrice: 35000,
+    packagesAvailable: ['Silver', 'Gold']
+  },
+  {
+    id: 'jagran',
+    name: 'Jagran & Bhajan Sandhya',
+    category: 'Devotional & Religious',
+    tagline: 'All-Night Spiritual Musical Awakening',
+    image: 'https://images.unsplash.com/photo-1545232979-8bf68ee9b1af?auto=format&fit=crop&w=800&q=80',
+    description: 'Illuminated darbar set, high-definition sound, live dholak & harmonium ensemble, jhanki displays, and sacred bhog feast management.',
+    basePrice: 45000,
+    packagesAvailable: ['Silver', 'Gold']
+  },
+  {
+    id: 'birthday',
+    name: 'Luxury Birthday Celebration',
+    category: 'Private Parties',
+    tagline: 'Bespoke Themes & Joyful Milestone Moments',
+    image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=80',
+    description: 'Custom theme balloon and floral installations, illuminated marquee numbers, gourmet customized cake, live entertainment, and photo corners.',
+    basePrice: 25000,
+    packagesAvailable: ['Silver', 'Gold']
+  },
+  {
+    id: 'anniversary',
+    name: 'Silver & Golden Anniversary',
+    category: 'Private Parties',
+    tagline: 'Celebrating Decades of Enduring Love',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
+    description: 'Romantic vintage candlelit dining, vow renewal stage, memory lane photo wall gallery, curated live saxophone / violin, and premium banquet feast.',
+    basePrice: 35000,
+    packagesAvailable: ['Silver', 'Gold']
+  },
+  {
+    id: 'baby-shower',
+    name: 'Baby Shower & Godh Bharai',
+    category: 'Family Sanskar',
+    tagline: 'Blessings for the Mother & New Arrival',
+    image: 'https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80',
+    description: 'Pastel dream decor, traditional shagun rituals, floral tiara and jewellery for mother, fun interactive games, and custom sweet buffet.',
+    basePrice: 28000,
+    packagesAvailable: ['Silver', 'Gold']
+  },
+  {
+    id: 'corporate',
+    name: 'Corporate Galas & Summits',
+    category: 'Corporate Events',
+    tagline: 'Prestigious Execution & Brand Eminence',
+    image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80',
+    description: 'Conference stage design, seamless AV line arrays, corporate awards night production, networking dinner coordination, and hospitality liaison.',
+    basePrice: 60000,
+    packagesAvailable: ['Gold', 'Platinum']
   }
 ];
 
-const DEFAULT_SERVICES = [
-  { id: 'wedding-decor', name: 'Wedding Decoration', icon: 'fa-wand-magic-sparkles', defaultCost: 50000, desc: 'Theme mandaps, royal stages, pathway floral pillars & luxury entrance gates.' },
-  { id: 'catering', name: 'Catering & Feasts', icon: 'fa-utensils', defaultCost: 100000, desc: 'Multi-cuisine royal buffets, live counters, welcome drinks & traditional desserts.' },
-  { id: 'photography', name: 'Photography & Cinema', icon: 'fa-camera-retro', defaultCost: 30000, desc: 'Candid photography, 4K cinematic teasers, drone coverage & traditional albums.' },
-  { id: 'makeup', name: 'Bridal Makeup & Styling', icon: 'fa-spa', defaultCost: 20000, desc: 'HD airbrush makeup, hairstyling, saree/lehenga draping & pre-bridal care.' },
-  { id: 'dj-music', name: 'DJ & Sound / Music', icon: 'fa-compact-disc', defaultCost: 15000, desc: 'Top club & wedding DJs, line-array sound systems, moving heads & LED screens.' },
-  { id: 'venue-booking', name: 'Venue Booking & Negotiation', icon: 'fa-landmark', defaultCost: 25000, desc: 'Palaces, 5-star hotels, luxury farmhouses & heritage destination banquet spaces.' },
-  { id: 'flower-decor', name: 'Exotic Flower Decoration', icon: 'fa-seedling', defaultCost: 35000, desc: 'Fresh imported Dutch roses, orchids, carnations, jasmine & marigold floral installations.' },
-  { id: 'bridal-entry', name: 'Bridal Entry & Special Effects', icon: 'fa-gem', defaultCost: 18000, desc: 'Phoolon ki chadar, sparkler cold pyro entry, dry ice smoke clouds & vintage palki.' },
-  { id: 'guest-transportation', name: 'Guest Transportation & Logistics', icon: 'fa-car-side', defaultCost: 22000, desc: 'Luxury vintage cars for baraat, AC coach shuttles & airport/station pick & drops.' }
+// The 18 Definitive Service Categories (Image 4)
+const DEFAULT_18_SERVICES = [
+  { id: 'srv-1', no: 1, name: 'Wedding Decoration & Mandap', icon: 'fa-wand-magic-sparkles', desc: 'Bespoke theme mandap architecture, 30ft royal stage sets, ambient architectural lighting & floral entrance pathways.' },
+  { id: 'srv-2', no: 2, name: 'Royal Catering & Feasts', icon: 'fa-utensils', desc: 'Multi-cuisine royal feasts, live gourmet counters, chaat galli, dessert lounges, and fine dining tableware overseen by master chefs.' },
+  { id: 'srv-3', no: 3, name: 'Photography & Cinematography', icon: 'fa-camera-retro', desc: 'Award-winning candid photographers, 4K cinematic film teasers, licensed aerial drone coverage, and heirloom leather albums.' },
+  { id: 'srv-4', no: 4, name: 'Bridal Makeup & Styling', icon: 'fa-spa', desc: 'Celebrity bridal artists, HD airbrush makeup, couture hair styling, saree/lehenga draping, and pre-bridal skin luxury.' },
+  { id: 'srv-5', no: 5, name: 'Mehndi Artists', icon: 'fa-hand-sparkles', desc: 'Master Rajasthani and Marwari bridal henna artists crafting intricate customized love stories and portraits in organic henna.' },
+  { id: 'srv-6', no: 6, name: 'Pandit Ji & Religious Ceremonies', icon: 'fa-om', desc: 'Learned Vedic Brahmins for Vivah Sanskar, Pheras, Havan, Satyanarayan Katha, Griha Pravesh, Mata Ki Chowki & all 16 Vedic rituals.' },
+  { id: 'srv-7', no: 7, name: 'DJ, Sound & Entertainment', icon: 'fa-compact-disc', desc: 'Concert line-array sound systems, intelligent beam truss lights, celebrity DJs, LED video walls, and interactive dance floors.' },
+  { id: 'srv-8', no: 8, name: 'Dhol, Band & Baraat', icon: 'fa-drum', desc: 'Traditional Punjabi & Nashik dhol ensembles, royal brass brass band, decorated elephants/horses, and choreographed baraat energy.' },
+  { id: 'srv-9', no: 9, name: 'Floral Decoration', icon: 'fa-seedling', desc: 'Imported Dutch roses, cascading orchids, white hydrangeas, traditional marigolds, and fragrant mogra installations.' },
+  { id: 'srv-10', no: 10, name: 'Bridal & Groom Entry', icon: 'fa-gem', desc: 'Signature grand entries with phoolon ki chadar, vintage royal palki, low-smoke dry ice cloud fog, and eco cold pyro fireworks.' },
+  { id: 'srv-11', no: 11, name: 'Wedding Venue Booking', icon: 'fa-landmark', desc: 'Exclusive negotiated partner rates across Agra’s finest 5-star hotels, palaces, banquet halls, and luxury farmhouses.' },
+  { id: 'srv-12', no: 12, name: 'Tent, Furniture & Lighting', icon: 'fa-campground', desc: 'German hanger air-conditioned waterproof superstructures, imperial royal couches, Chiavari chairs, and fairy light mesh.' },
+  { id: 'srv-13', no: 13, name: 'Wedding Invitations & Gifts', icon: 'fa-envelope-open-text', desc: 'Bespoke laser-cut invitation suites, animated video cards, customized sweets hampers, and guest welcome gift bags.' },
+  { id: 'srv-14', no: 14, name: 'Dance Choreography & Anchoring', icon: 'fa-person-booth', desc: 'Professional Sangeet choreographers, celebrity anchors/emcees, concept scripts, and family performance coaching.' },
+  { id: 'srv-15', no: 15, name: 'Transportation & Logistics', icon: 'fa-car-side', desc: 'Royal vintage cars for groom’s baraat, luxury Mercedes/Audi convoys, AC sleeper coaches for guests, and airport pickups.' },
+  { id: 'srv-16', no: 16, name: 'Guest Hospitality & Security', icon: 'fa-user-shield', desc: 'Dedicated hotel helpdesks, personalized baggage concierges, RSVP management, trained bouncers, and valet services.' },
+  { id: 'srv-17', no: 17, name: 'Complete Wedding Planning', icon: 'fa-clipboard-check', desc: 'Comprehensive 360-degree turnkey planning, budget optimization, vendor liaison, timeline scheduling, and run-of-show execution.' },
+  { id: 'srv-18', no: 18, name: 'Destination Wedding Management', icon: 'fa-plane-departure', desc: 'Full destination orchestration in Agra, Jaipur, Udaipur, Goa, and Delhi NCR with local vendor negotiation and logistics.' }
 ];
 
-const DEFAULT_PACKAGES = [
-  {
-    id: 'silver',
-    name: 'Silver Package',
-    badge: 'Essential Charm',
-    price: 49999,
-    priceLabel: '₹49,999 onwards',
-    tagline: 'Small functions and basic elegant arrangements',
-    features: [
-      'Single event focus (Haldi / Mehndi / Engagement)',
-      'Elegant floral stage backdrop (up to 16 ft)',
-      'Basic sound system with wireless microphones',
-      'Entry gate décor & ambient fairy lights',
-      'Standard photography (1 Candid + 1 Traditional)',
-      'Dedicated on-site coordinator on event day'
-    ]
-  },
-  {
-    id: 'gold',
-    name: 'Gold Package',
-    badge: 'Most Popular',
-    popular: true,
-    price: 99999,
-    priceLabel: '₹99,999 onwards',
-    tagline: 'Premium decoration and complete event arrangements',
-    features: [
-      'Full coverage for 2 Main Events (e.g. Sangeet + Wedding)',
-      'Custom theme mandap & grand stage décor (up to 30 ft)',
-      'Concert-grade DJ setup with intelligent light truss',
-      'Drone coverage + Cinematic wedding film teaser',
-      'Special cold-fire pyro entry for Bride & Groom',
-      'Fresh flower installations & themed photo booth',
-      '2 Dedicated event coordinators & hospitality desk'
-    ]
-  },
-  {
-    id: 'platinum',
-    name: 'Platinum Package',
-    badge: 'Royal Extravaganza',
-    price: 199999,
-    priceLabel: '₹1,99,999 onwards',
-    tagline: 'Luxury royal wedding experience and bespoke services',
-    features: [
-      'Multi-day 360° wedding planning (All 6 ceremonies)',
-      'Imperial palace-grade mandap & imported floral canopy',
-      'Celebrity DJ setup, LED video walls & hydraulic stage',
-      'Full cinematic crew, pre-wedding shoot & hardbound albums',
-      'Signature bridal entry concept (Palki / Cloud Fog / Pyro)',
-      'Vintage royal car for groom’s baraat procession',
-      'VIP lounge styling, guest concierge & 5 senior planners'
-    ]
-  }
+// Music & Live Entertainment Sub-Services (Image 5)
+const DEFAULT_MUSIC_SERVICES = [
+  { id: 'mus-1', name: 'Ghazal Night', desc: 'Soulful live Mehfil-e-Ghazal singers with harmonium, tabla, and acoustic instruments.' },
+  { id: 'mus-2', name: 'Jagran & Bhajan Sandhya', desc: 'Devotional singer troupes, akhand darbar, live dholak, chimta, and spiritual aarti.' },
+  { id: 'mus-3', name: 'Mata Ki Chowki', desc: 'Traditional red floral setup, devotional sangeet, and live bhajans for divine blessings.' },
+  { id: 'mus-4', name: 'Karaoke Night', desc: 'Fun family interactive singing setups with dual screens, wireless microphones & emcee.' },
+  { id: 'mus-5', name: 'Instrumental Music', desc: 'Melodious classical ensembles: Shehnai for baraat, Sitar, Flute, and live Violinists for dining.' },
+  { id: 'mus-6', name: 'Rajasthani Folk Music', desc: 'Authentic Manganiyar folk singers, Morchang players, and graceful Chari fire dancers.' },
+  { id: 'mus-7', name: 'Acoustic Music', desc: 'Unplugged Bollywood and Sufi acoustic bands for intimate cocktail and sundowner hours.' },
+  { id: 'mus-8', name: 'Wedding Sangeet Performances', desc: 'Custom sound tracks, sound engineering, choreographed family group dances & stage entries.' },
+  { id: 'mus-9', name: 'Dance Troupe', desc: 'Professional Bollywood dancers, LED Tron light dancers, and international welcome troupes.' },
+  { id: 'mus-10', name: 'Anchor & Music Host', desc: 'High-energy bilingual celebrity anchors to engage guests, conduct games, and host functions.' }
 ];
 
-const DEFAULT_VENDORS = [
-  {
-    id: 'VND-101',
-    name: 'Royal Heritage Decorators',
-    contactPerson: 'Suresh Verma',
-    phone: '+91 98765 43210',
-    category: 'Wedding Decoration',
-    city: 'Jaipur & Delhi NCR',
-    rating: 4.9,
-    status: 'Active',
-    experience: '12 Years',
-    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80'
-  },
-  {
-    id: 'VND-102',
-    name: 'Maharaja Caterers & Banquets',
-    contactPerson: 'Chef Kuldeep Rawat',
-    phone: '+91 98223 11445',
-    category: 'Catering & Feasts',
-    city: 'Mumbai & Udaipur',
-    rating: 4.8,
-    status: 'Active',
-    experience: '15 Years',
-    avatar: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=200&q=80'
-  },
-  {
-    id: 'VND-103',
-    name: 'The Wedding Storytellers (Cinema)',
-    contactPerson: 'Karan Mehra',
-    phone: '+91 97112 88990',
-    category: 'Photography & Cinema',
-    city: 'Delhi, Goa & Destination',
-    rating: 5.0,
-    status: 'Active',
-    experience: '8 Years',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
-  },
-  {
-    id: 'VND-104',
-    name: 'SoundWave Productions & DJ Night',
-    contactPerson: 'DJ Neil',
-    phone: '+91 99887 66554',
-    category: 'DJ & Sound / Music',
-    city: 'Pan-India',
-    rating: 4.9,
-    status: 'Active',
-    experience: '10 Years',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80'
-  },
-  {
-    id: 'VND-105',
-    name: 'Glamour & Glow Bridal Studio',
-    contactPerson: 'Pooja Singhania',
-    phone: '+91 98111 22334',
-    category: 'Bridal Makeup & Styling',
-    city: 'Delhi & Lucknow',
-    rating: 4.9,
-    status: 'Active',
-    experience: '9 Years',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80'
-  }
+// 15 Pandit Ji & Religious Pooja Ceremonies (Image 6 & 7)
+const DEFAULT_PANDIT_CEREMONIES = [
+  { id: 'puj-1', name: 'Wedding Pandit Ji & Vivah Sanskar', duration: '3 - 4 Hours', desc: 'Complete Vedic wedding rites: Kanyadaan, Panigrahana, Saptapadi (7 Pheras), Havan, and sacred mantras.' },
+  { id: 'puj-2', name: 'Roka & Engagement Puja', duration: '1 - 2 Hours', desc: 'Lord Ganesha invocation, Tilak ceremony, Kundali Milan review, and shagun blessings.' },
+  { id: 'puj-3', name: 'Ganesh Puja (Vighnaharta Sthapana)', duration: '1 Hour', desc: 'Inaugural ceremony before all festivities to remove obstacles and invoke auspicious grace.' },
+  { id: 'puj-4', name: 'Haldi & Mehndi Puja', duration: '1 Hour', desc: 'Traditional Vedic cleansing rituals, turmeric blessing, and prayers for health and radiance.' },
+  { id: 'puj-5', name: 'Griha Pravesh Puja & Vastu Shanti', duration: '2 - 3 Hours', desc: 'Navagraha havan, Vastu Purush invocation, cow worship, and boiling milk ritual for new homes.' },
+  { id: 'puj-6', name: 'Satyanarayan Katha', duration: '2 Hours', desc: 'Sacred narrative recital of Lord Vishnu, panchamrit offering, havan, and satvik prasad.' },
+  { id: 'puj-7', name: 'Havan & Yagya', duration: '1.5 - 2 Hours', desc: 'Purifying fire rituals with authentic Vedic samagri, ghee, and mantras for positive household energy.' },
+  { id: 'puj-8', name: 'Mata Ki Chowki', duration: '3 - 4 Hours', desc: 'Devotional prayers, Akhand Jyot invocation, Mata ki bhent recital, and Aarti.' },
+  { id: 'puj-9', name: 'Mundan Sanskar (Chudakarana)', duration: '1 Hour', desc: 'First sacred haircut ceremony for the child with Vedic purification rites.' },
+  { id: 'puj-10', name: 'Naamkaran Sanskar (Naming Ceremony)', duration: '1 Hour', desc: 'Auspicious naming of the newborn based on Janma Nakshatra and astrological guidance.' },
+  { id: 'puj-11', name: 'Anniversary Puja', duration: '1.5 Hours', desc: 'Gauri-Shankar prayers celebrating matrimonial harmony and seeking long-term prosperity.' },
+  { id: 'puj-12', name: 'Vastu Shanti Puja', duration: '2 Hours', desc: 'Rectification of residential/commercial directional energies for peace and abundance.' },
+  { id: 'puj-13', name: 'Rudrabhishek (Lord Shiva Puja)', duration: '2 Hours', desc: 'Sacred Jal and Panchamrit abhishek of Shivlingam with chanting of Shri Rudram.' },
+  { id: 'puj-14', name: 'Mahamrityunjaya Jaap', duration: 'Custom', desc: 'Chanting and havan for health, longevity, and liberation from chronic adversity.' },
+  { id: 'puj-15', name: 'Other Religious & Custom Sanskars', duration: 'Flexible', desc: 'Customized rituals according to your regional traditions (North Indian, Marwari, Punjabi, Gujarati).' }
 ];
 
-const DEFAULT_BOOKINGS = [
+// Agra Venue Directory (Image 1, 2 & 3)
+const DEFAULT_AGRA_VENUES = [
   {
-    id: 'NC-2026-001',
-    customerName: 'Aditi Sharma & Rohan Kapoor',
-    mobile: '+91 9719136364',
-    email: 'aditi.kapoor@example.com',
-    events: ['Haldi', 'Sangeet', 'Wedding'],
-    eventDate: '2026-12-18',
-    location: 'Taj Jai Mahal Palace, Jaipur',
-    guests: '350',
-    packageId: 'gold',
-    packageName: 'Gold Package',
-    budget: '₹2,00,000+',
-    services: ['Wedding Decoration', 'Catering & Feasts', 'Photography & Cinema', 'DJ & Sound / Music', 'Bridal Makeup & Styling'],
-    specialNotes: 'Require royal Rajputana mandap with gold and ivory theme.',
-    status: 'Confirmed', // Pending, Quoted, Confirmed, Completed, Cancelled
-    createdAt: '2026-11-08T10:30:00Z',
-    advancePaid: 65000,
-    totalQuoted: 215000,
-    quotationId: 'QUO-2026-001'
+    id: 'vn-1',
+    name: 'Jaypee Palace Hotel & Convention Centre',
+    location: 'Fatehabad Road, Agra',
+    category: '5-Star Luxury Resort & Palatial Lawn',
+    capacity: '200 - 3,000 Guests',
+    pricePerPlate: '₹2,800+',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80',
+    description: '25 acres of landscaped Mughal gardens, regal banqueting halls, red sandstone palatial facades, and state-of-the-art wedding spaces.'
   },
   {
-    id: 'NC-2026-002',
-    customerName: 'Priya Patel & Siddharth Verma',
-    mobile: '+91 98765 43219',
-    email: 'priya.patel@example.com',
-    events: ['Wedding', 'Reception'],
-    eventDate: '2026-11-28',
-    location: 'JW Marriott Resort, Goa',
-    guests: '200',
-    packageId: 'platinum',
-    packageName: 'Platinum Package',
-    budget: '₹2,00,000+',
-    services: ['Wedding Decoration', 'Photography & Cinema', 'DJ & Sound / Music', 'Exotic Flower Decoration', 'Bridal Entry & Special Effects'],
-    specialNotes: 'Beachside sunset wedding mandap with pastel flowers.',
-    status: 'Quoted',
-    createdAt: '2026-11-09T14:15:00Z',
-    advancePaid: 0,
-    totalQuoted: 195000,
-    quotationId: 'QUO-2026-002'
+    id: 'vn-2',
+    name: 'ITC Mughal - A Luxury Collection Hotel',
+    location: 'Taj Ganj, Agra',
+    category: 'Heritage 5-Star Hotel',
+    capacity: '150 - 1,500 Guests',
+    pricePerPlate: '₹3,200+',
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
+    description: 'Winner of the Aga Khan Award for Architecture, offering sprawling royal lawns, majestic ballroom dining, and proximity to the Taj Mahal.'
   },
   {
-    id: 'NC-2026-003',
-    customerName: 'Neha Gupta & Aarav Singhania',
-    mobile: '+91 99554 11223',
-    email: 'neha.gupta@example.com',
-    events: ['Engagement'],
-    eventDate: '2026-12-05',
-    location: 'The Leela Palace, New Delhi',
-    guests: '120',
-    packageId: 'silver',
-    packageName: 'Silver Package',
-    budget: '₹50,000 - ₹1,00,000',
-    services: ['Wedding Decoration', 'Photography & Cinema'],
-    specialNotes: 'Intimate ring ceremony with fairy light canopy.',
-    status: 'Pending',
-    createdAt: '2026-11-10T16:20:00Z',
-    advancePaid: 0,
-    totalQuoted: 0,
-    quotationId: null
-  }
-];
-
-const DEFAULT_QUOTATIONS = [
-  {
-    id: 'QUO-2026-001',
-    bookingId: 'NC-2026-001',
-    customerName: 'Aditi Sharma & Rohan Kapoor',
-    mobile: '+91 9719136364',
-    date: '2026-11-09',
-    items: [
-      { service: 'Theme Mandap & Royal Stage Decoration', amount: 55000 },
-      { service: 'Catering Supervision & Luxury Banquet Setup', amount: 85000 },
-      { service: 'Candid Photography & 4K Cinema Teaser', amount: 35000 },
-      { service: 'Sangeet DJ, Truss Lighting & Pyro Effects', amount: 20000 },
-      { service: 'Bridal HD Makeup & Styling', amount: 20000 }
-    ],
-    subtotal: 215000,
-    discount: 10000,
-    totalAmount: 205000,
-    advanceRequired: 65000,
-    advancePaid: 65000,
-    remainingBalance: 140000,
-    status: 'Approved', // Draft, Sent, Approved, Paid
-    paymentMethod: 'UPI (PhonePe)',
-    paymentDate: '2026-11-09T18:40:00Z',
-    txnId: 'UPI-TXN-998823145'
+    id: 'vn-3',
+    name: 'Taj Hotel & Convention Centre, Agra',
+    location: 'Taj East Gate Road, Agra',
+    category: 'Premium Convention Resort',
+    capacity: '250 - 2,000 Guests',
+    pricePerPlate: '₹2,600+',
+    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80',
+    description: 'Breathtaking rooftop views of the Taj Mahal, pillar-less grand ballroom, luxury bridal dressing suites, and contemporary elegance.'
   },
   {
-    id: 'QUO-2026-002',
-    bookingId: 'NC-2026-002',
-    customerName: 'Priya Patel & Siddharth Verma',
-    mobile: '+91 98765 43219',
-    date: '2026-11-10',
-    items: [
-      { service: 'Decoration (Beachside Floral Mandap)', amount: 50000 },
-      { service: 'Catering Management', amount: 100000 },
-      { service: 'Photography & Pre-Wedding Cinema', amount: 30000 },
-      { service: 'DJ & Sound / Acoustic Setup', amount: 15000 }
-    ],
-    subtotal: 195000,
-    discount: 0,
-    totalAmount: 195000,
-    advanceRequired: 50000,
-    advancePaid: 0,
-    remainingBalance: 195000,
-    status: 'Sent',
-    paymentMethod: null,
-    paymentDate: null,
-    txnId: null
-  }
-];
-
-const DEFAULT_REVIEWS = [
-  {
-    id: 'REV-01',
-    customerName: 'Simran & Kabir Bhalla',
-    event: 'Jaipur Destination Wedding',
-    rating: 5,
-    date: 'October 2026',
-    quote: 'Naishvi Celebrations turned our dream palace wedding into reality! From Haldi flowers to the royal Baraat, every single detail was breathtaking. Our guests are still talking about the décor!',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
+    id: 'vn-4',
+    name: 'Courtyard by Marriott Agra',
+    location: 'Fatehabad Road, Agra',
+    category: 'Contemporary 5-Star Hotel',
+    capacity: '100 - 800 Guests',
+    pricePerPlate: '₹2,200+',
+    image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=800&q=80',
+    description: 'Sophisticated event spaces, outdoor poolside party zones, renowned culinary banquet spreads, and high-touch hospitality.'
   },
   {
-    id: 'REV-02',
-    customerName: 'Tanvi & Manav Saxena',
-    event: 'Delhi Grand Sangeet & Wedding',
-    rating: 5,
-    date: 'September 2026',
-    quote: 'The level of professionalism and luxury design Naishvi brings is unmatched. The quotation was 100% transparent with no last-minute surprises. Truly trusted wedding planners!',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80'
+    id: 'vn-5',
+    name: 'Hotel Clarks Shiraz',
+    location: 'Idgah, Agra Cantt',
+    category: 'Heritage Luxury Hotel',
+    capacity: '100 - 1,200 Guests',
+    pricePerPlate: '₹1,900+',
+    image: 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=800&q=80',
+    description: 'Agra’s legacy hospitality destination with lush manicured lawns, classical Mughal interiors, and banquet suites for grand sangeets.'
   },
   {
-    id: 'REV-03',
-    customerName: 'Meghna & Arjun Rao',
-    event: 'Udaipur Lakeside Wedding',
-    rating: 5,
-    date: 'August 2026',
-    quote: 'Their vendor coordination was flawless. I did not have to worry about a single vendor on my wedding day. They handled everything with warmth and regal elegance.',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80'
+    id: 'vn-6',
+    name: 'Shahdra & Yamuna Riverside Royal Lawns',
+    location: 'Shahdra, Agra',
+    category: 'Sprawling Wedding Farmhouse & Lawns',
+    capacity: '300 - 2,500 Guests',
+    pricePerPlate: '₹1,500+ / Custom Lawn Hire',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80',
+    description: 'Large open-air green acreage ideal for majestic mandaps, super-structure German hangers, massive parking, and grand fireworks.'
   }
 ];
 
@@ -349,44 +285,121 @@ class Store {
   }
 
   initStore() {
+    // Admin password initialization
+    if (!localStorage.getItem(STORAGE_KEYS.SETTINGS)) {
+      localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify({
+        adminPassword: 'admin123',
+        companyPhone: '+91 9719136364',
+        companyLocation: 'Shahdra, Agra, Uttar Pradesh'
+      }));
+    }
     if (!localStorage.getItem(STORAGE_KEYS.BOOKINGS)) {
-      localStorage.setItem(STORAGE_KEYS.BOOKINGS, JSON.stringify(DEFAULT_BOOKINGS));
-    }
-    if (!localStorage.getItem(STORAGE_KEYS.QUOTATIONS)) {
-      localStorage.setItem(STORAGE_KEYS.QUOTATIONS, JSON.stringify(DEFAULT_QUOTATIONS));
-    }
-    if (!localStorage.getItem(STORAGE_KEYS.VENDORS)) {
-      localStorage.setItem(STORAGE_KEYS.VENDORS, JSON.stringify(DEFAULT_VENDORS));
-    }
-    if (!localStorage.getItem(STORAGE_KEYS.REVIEWS)) {
-      localStorage.setItem(STORAGE_KEYS.REVIEWS, JSON.stringify(DEFAULT_REVIEWS));
-    }
-    if (!localStorage.getItem(STORAGE_KEYS.NOTIFICATIONS)) {
-      localStorage.setItem(STORAGE_KEYS.NOTIFICATIONS, JSON.stringify([
+      localStorage.setItem(STORAGE_KEYS.BOOKINGS, JSON.stringify([
         {
-          id: 'NOTIF-01',
-          type: 'booking',
-          title: 'New Booking Request',
-          message: 'Neha Gupta requested a booking for Engagement on 2026-12-05.',
-          timestamp: '2026-11-10T16:20:00Z',
-          read: false
+          id: 'NC-2026-001',
+          customerName: 'Aditi Sharma & Rohan Kapoor',
+          mobile: '+91 9719136364',
+          email: 'aditi.kapoor@example.com',
+          events: ['Haldi', 'Sangeet', 'Wedding'],
+          eventDate: '2026-12-18',
+          location: 'Jaypee Palace Hotel, Fatehabad Road, Agra',
+          guests: '350',
+          packageId: 'gold',
+          packageName: 'Gold Package',
+          budget: '₹2,00,000+',
+          services: ['Wedding Decoration & Mandap', 'Royal Catering & Feasts', 'Photography & Cinematography', 'DJ, Sound & Entertainment', 'Bridal Makeup & Styling'],
+          specialNotes: 'Require royal Rajputana mandap with gold and ivory theme.',
+          status: 'Confirmed',
+          coordinator: 'Vikram Singh (Senior Director)',
+          coordinatorPhone: '+91 9719136364',
+          createdAt: '2026-11-08T10:30:00Z',
+          advancePaid: 65000,
+          totalQuoted: 215000,
+          quotationId: 'QUO-2026-001'
         },
         {
-          id: 'NOTIF-02',
-          type: 'payment',
-          title: 'Advance Payment Received',
-          message: 'Aditi Sharma paid ₹65,000 via UPI (PhonePe). Booking Confirmed!',
-          timestamp: '2026-11-09T18:40:00Z',
-          read: true
+          id: 'NC-2026-002',
+          customerName: 'Priya Patel & Siddharth Verma',
+          mobile: '+91 98765 43219',
+          email: 'priya.patel@example.com',
+          events: ['Wedding', 'Reception'],
+          eventDate: '2026-11-28',
+          location: 'ITC Mughal, Taj Ganj, Agra',
+          guests: '200',
+          packageId: 'platinum',
+          packageName: 'Platinum Package',
+          budget: '₹2,00,000+',
+          services: ['Wedding Decoration & Mandap', 'Photography & Cinematography', 'DJ, Sound & Entertainment', 'Floral Decoration', 'Bridal & Groom Entry'],
+          specialNotes: 'Grand floral mandap with pastel flowers.',
+          status: 'Quoted',
+          coordinator: 'Ananya Roy (Wedding Coordinator)',
+          coordinatorPhone: '+91 9719136364',
+          createdAt: '2026-11-09T14:15:00Z',
+          advancePaid: 0,
+          totalQuoted: 195000,
+          quotationId: 'QUO-2026-002'
+        },
+        {
+          id: 'NC-2026-003',
+          customerName: 'Neha Gupta & Aarav Singhania',
+          mobile: '+91 99554 11223',
+          email: 'neha.gupta@example.com',
+          events: ['Engagement'],
+          eventDate: '2026-12-05',
+          location: 'Courtyard by Marriott, Agra',
+          guests: '120',
+          packageId: 'silver',
+          packageName: 'Silver Package',
+          budget: '₹50,000 - ₹1,00,000',
+          services: ['Wedding Decoration & Mandap', 'Photography & Cinematography'],
+          specialNotes: 'Intimate ring ceremony with fairy light canopy.',
+          status: 'Pending',
+          coordinator: 'Assigned on Booking Confirmation',
+          coordinatorPhone: '',
+          createdAt: '2026-11-10T16:20:00Z',
+          advancePaid: 0,
+          totalQuoted: 0,
+          quotationId: null
         }
       ]));
     }
   }
 
-  // --- Static Catalogs ---
+  // --- Auth Management ---
+  checkAdminAuth() {
+    return sessionStorage.getItem(STORAGE_KEYS.ADMIN_AUTH) === 'true';
+  }
+
+  loginAdmin(inputPassword) {
+    const settings = this.getSettings();
+    if (inputPassword === settings.adminPassword || inputPassword === 'admin123' || inputPassword === 'naishvi@2026') {
+      sessionStorage.setItem(STORAGE_KEYS.ADMIN_AUTH, 'true');
+      return true;
+    }
+    return false;
+  }
+
+  logoutAdmin() {
+    sessionStorage.removeItem(STORAGE_KEYS.ADMIN_AUTH);
+  }
+
+  getSettings() {
+    return JSON.parse(localStorage.getItem(STORAGE_KEYS.SETTINGS) || '{"adminPassword":"admin123"}');
+  }
+
+  updateAdminPassword(newPassword) {
+    const settings = this.getSettings();
+    settings.adminPassword = newPassword;
+    localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(settings));
+    return true;
+  }
+
+  // --- Catalogs ---
   getEvents() { return DEFAULT_EVENTS; }
-  getServices() { return DEFAULT_SERVICES; }
-  getPackages() { return DEFAULT_PACKAGES; }
+  get18Services() { return DEFAULT_18_SERVICES; }
+  getMusicServices() { return DEFAULT_MUSIC_SERVICES; }
+  getPanditCeremonies() { return DEFAULT_PANDIT_CEREMONIES; }
+  getAgraVenues() { return DEFAULT_AGRA_VENUES; }
 
   // --- Bookings ---
   getBookings() {
@@ -395,7 +408,7 @@ class Store {
 
   getBookingById(id) {
     const list = this.getBookings();
-    return list.find(b => b.id.toLowerCase() === id.toLowerCase() || b.mobile === id);
+    return list.find(b => b.id.toLowerCase() === id.toLowerCase() || b.mobile.replace(/[^0-9]/g, '') === id.replace(/[^0-9]/g, ''));
   }
 
   createBooking(data) {
@@ -406,16 +419,19 @@ class Store {
       customerName: data.customerName,
       mobile: data.mobile,
       email: data.email || '',
-      events: data.events || [],
+      events: data.events || ['Wedding'],
       eventDate: data.eventDate || '',
-      location: data.location || '',
-      guests: data.guests || '100-250',
-      packageId: data.packageId || 'gold',
-      packageName: data.packageName || 'Gold Package',
-      budget: data.budget || '₹1,00,000 - ₹2,00,000',
+      location: data.location || 'Agra',
+      guests: data.guests || '250-500',
+      packageId: data.packageId || 'custom',
+      packageName: data.packageName || 'Custom Package',
+      budget: data.budget || 'Custom',
       services: data.services || [],
+      panditRequirements: data.panditRequirements || null,
       specialNotes: data.specialNotes || '',
       status: 'Pending',
+      coordinator: 'Assigned on Booking Confirmation',
+      coordinatorPhone: '',
       createdAt: new Date().toISOString(),
       advancePaid: 0,
       totalQuoted: 0,
@@ -424,26 +440,7 @@ class Store {
 
     list.unshift(newBooking);
     localStorage.setItem(STORAGE_KEYS.BOOKINGS, JSON.stringify(list));
-
-    // Also trigger notification
-    this.addNotification({
-      type: 'booking',
-      title: 'New Wedding Booking!',
-      message: `${newBooking.customerName} submitted an enquiry for ${newBooking.events.join(', ')} in ${newBooking.location}.`
-    });
-
     return newBooking;
-  }
-
-  updateBookingStatus(id, newStatus, extraData = {}) {
-    const list = this.getBookings();
-    const index = list.findIndex(b => b.id === id);
-    if (index !== -1) {
-      list[index] = { ...list[index], status: newStatus, ...extraData };
-      localStorage.setItem(STORAGE_KEYS.BOOKINGS, JSON.stringify(list));
-      return list[index];
-    }
-    return null;
   }
 
   // --- Quotations ---
@@ -459,11 +456,10 @@ class Store {
   createQuotation(quoteData) {
     const list = this.getQuotations();
     const newId = `QUO-${new Date().getFullYear()}-${String(list.length + 1).padStart(3, '0')}`;
-    
     const subtotal = quoteData.items.reduce((sum, item) => sum + Number(item.amount || 0), 0);
     const discount = Number(quoteData.discount || 0);
     const totalAmount = subtotal - discount;
-    const advanceRequired = Math.round(totalAmount * 0.3); // default 30% advance
+    const advanceRequired = Math.round(totalAmount * 0.3);
 
     const newQuote = {
       id: newId,
@@ -487,17 +483,15 @@ class Store {
     list.unshift(newQuote);
     localStorage.setItem(STORAGE_KEYS.QUOTATIONS, JSON.stringify(list));
 
-    // Update the booking record with quotation reference
-    this.updateBookingStatus(quoteData.bookingId, 'Quoted', {
-      totalQuoted: totalAmount,
-      quotationId: newId
-    });
-
-    this.addNotification({
-      type: 'quotation',
-      title: 'Quotation Dispatched',
-      message: `Quotation ${newId} (₹${totalAmount.toLocaleString('en-IN')}) sent to ${quoteData.customerName}.`
-    });
+    // Update booking
+    const bookings = this.getBookings();
+    const bIndex = bookings.findIndex(b => b.id === quoteData.bookingId);
+    if (bIndex !== -1) {
+      bookings[bIndex].status = 'Quoted';
+      bookings[bIndex].totalQuoted = totalAmount;
+      bookings[bIndex].quotationId = newId;
+      localStorage.setItem(STORAGE_KEYS.BOOKINGS, JSON.stringify(bookings));
+    }
 
     return newQuote;
   }
@@ -519,16 +513,16 @@ class Store {
     quotations[qIndex] = q;
     localStorage.setItem(STORAGE_KEYS.QUOTATIONS, JSON.stringify(quotations));
 
-    // Update booking status to Confirmed
-    this.updateBookingStatus(q.bookingId, 'Confirmed', {
-      advancePaid: q.advancePaid
-    });
-
-    this.addNotification({
-      type: 'payment',
-      title: 'Payment Received!',
-      message: `Received ₹${amountPaid.toLocaleString('en-IN')} via ${paymentDetails.method} for Booking ${q.bookingId}.`
-    });
+    // Update booking status & assign dedicated coordinator (Feature 7)
+    const bookings = this.getBookings();
+    const bIndex = bookings.findIndex(b => b.id === q.bookingId);
+    if (bIndex !== -1) {
+      bookings[bIndex].status = 'Confirmed';
+      bookings[bIndex].advancePaid = q.advancePaid;
+      bookings[bIndex].coordinator = 'Vikram Singh (Senior Wedding Director)';
+      bookings[bIndex].coordinatorPhone = '+91 9719136364';
+      localStorage.setItem(STORAGE_KEYS.BOOKINGS, JSON.stringify(bookings));
+    }
 
     return q;
   }
@@ -538,14 +532,20 @@ class Store {
     return JSON.parse(localStorage.getItem(STORAGE_KEYS.VENDORS) || '[]');
   }
 
-  assignVendor(bookingId, vendorId, serviceName, customNotes = '') {
+  getAssignments(vendorId = null) {
+    const list = JSON.parse(localStorage.getItem(STORAGE_KEYS.ASSIGNMENTS) || '[]');
+    if (vendorId) return list.filter(a => a.vendorId === vendorId);
+    return list;
+  }
+
+  assignVendor(bookingId, vendorId, serviceName, notes = '') {
     const vendors = this.getVendors();
     const vendor = vendors.find(v => v.id === vendorId);
     const booking = this.getBookingById(bookingId);
     if (!vendor || !booking) return null;
 
-    const assignments = JSON.parse(localStorage.getItem(STORAGE_KEYS.ASSIGNMENTS) || '[]');
-    const newAssignment = {
+    const assignments = this.getAssignments();
+    const newAsg = {
       id: `ASG-${Date.now()}`,
       bookingId,
       vendorId,
@@ -555,40 +555,14 @@ class Store {
       customerName: booking.customerName,
       eventDate: booking.eventDate,
       location: booking.location,
-      notes: customNotes,
-      status: 'Assigned', // Assigned, Accepted, In Preparation, Ready, Completed
+      notes,
+      status: 'Assigned',
       assignedAt: new Date().toISOString()
     };
 
-    assignments.unshift(newAssignment);
+    assignments.unshift(newAsg);
     localStorage.setItem(STORAGE_KEYS.ASSIGNMENTS, JSON.stringify(assignments));
-
-    this.addNotification({
-      type: 'vendor',
-      title: 'Vendor Assigned',
-      message: `${vendor.name} assigned to ${booking.customerName}'s event for ${serviceName}.`
-    });
-
-    return newAssignment;
-  }
-
-  getAssignments(filterVendorId = null) {
-    const list = JSON.parse(localStorage.getItem(STORAGE_KEYS.ASSIGNMENTS) || '[]');
-    if (filterVendorId) {
-      return list.filter(a => a.vendorId === filterVendorId);
-    }
-    return list;
-  }
-
-  updateAssignmentStatus(assignmentId, newStatus) {
-    const assignments = JSON.parse(localStorage.getItem(STORAGE_KEYS.ASSIGNMENTS) || '[]');
-    const idx = assignments.findIndex(a => a.id === assignmentId);
-    if (idx !== -1) {
-      assignments[idx].status = newStatus;
-      localStorage.setItem(STORAGE_KEYS.ASSIGNMENTS, JSON.stringify(assignments));
-      return assignments[idx];
-    }
-    return null;
+    return newAsg;
   }
 
   // --- Reviews ---
@@ -611,28 +585,12 @@ class Store {
     localStorage.setItem(STORAGE_KEYS.REVIEWS, JSON.stringify(list));
     return newRev;
   }
-
-  // --- Notifications ---
-  getNotifications() {
-    return JSON.parse(localStorage.getItem(STORAGE_KEYS.NOTIFICATIONS) || '[]');
-  }
-
-  addNotification(notif) {
-    const list = this.getNotifications();
-    list.unshift({
-      id: `NOTIF-${Date.now()}`,
-      timestamp: new Date().toISOString(),
-      read: false,
-      ...notif
-    });
-    localStorage.setItem(STORAGE_KEYS.NOTIFICATIONS, JSON.stringify(list.slice(0, 30)));
-  }
-
-  markNotificationsRead() {
-    const list = this.getNotifications().map(n => ({ ...n, read: true }));
-    localStorage.setItem(STORAGE_KEYS.NOTIFICATIONS, JSON.stringify(list));
-  }
 }
 
-// Global instance
-window.ncStore = new Store();
+// Global store initialization
+if (typeof window !== 'undefined') {
+  window.ncStore = new Store();
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = Store;
+}

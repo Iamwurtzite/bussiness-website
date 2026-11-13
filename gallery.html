@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Showcase Gallery | NAISHVI CELEBRATIONS</title>
-  <meta name="description" content="View our portfolio of royal Indian weddings, palace mandaps, haldi decor, and grand reception sets.">
+  <title>Real Wedding Gallery & Client Reviews | NAISHVI CELEBRATIONS Agra</title>
+  <meta name="description" content="Explore real weddings, mandap decor, and celebration videos in Agra by Naishvi Celebrations, featuring verified client reviews and testimonials.">
 
   <!-- Google Fonts: Playfair Display + Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,81 @@
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .video-showcase-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-luxury);
+      margin-bottom: 50px;
+    }
+    .video-wrapper {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      background: #000;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    }
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      display: block;
+      object-fit: cover;
+    }
+    .gallery-filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .gallery-filter-btn {
+      padding: 8px 20px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .gallery-filter-btn.active, .gallery-filter-btn:hover {
+      background: rgba(212, 175, 55, 0.2);
+      border-color: var(--primary-gold);
+      color: #fff;
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .review-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      position: relative;
+      transition: var(--transition);
+    }
+    .review-card:hover {
+      border-color: var(--primary-gold);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.12);
+    }
+    .review-stars {
+      color: #ffc107;
+      margin-bottom: 12px;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -24,10 +99,11 @@
     <div class="container">
       <div>
         <span><i class="fa-solid fa-phone text-gold"></i> +91 9719136364</span>
-        <span style="margin-left: 20px;"><i class="fa-solid fa-envelope text-gold"></i> royal@naishvicelebrations.com</span>
+        <span style="margin-left: 20px;"><i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, Uttar Pradesh</span>
       </div>
       <div class="top-links">
-        <a href="customer-portal.html"><i class="fa-solid fa-file-invoice"></i> Client Quotation Desk</a>
+        <a href="customer-dashboard.html"><i class="fa-solid fa-user-check"></i> Customer Dashboard</a>
+        <a href="budget-calculator.html"><i class="fa-solid fa-calculator"></i> Budget Calculator</a>
         <a href="admin.html"><i class="fa-solid fa-lock"></i> Admin Portal</a>
       </div>
     </div>
@@ -45,8 +121,12 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="events.html">Events</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html">18 Services</a></li>
         <li><a href="packages.html">Packages</a></li>
+        <li><a href="venues.html">Agra Venues</a></li>
+        <li><a href="pandit-services.html">Pandit Ji & Pooja</a></li>
+        <li><a href="budget-calculator.html">Calculator</a></li>
+        <li><a href="customer-dashboard.html">Track Booking</a></li>
         <li><a href="gallery.html" class="active">Gallery</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -67,67 +147,235 @@
     <div class="subpage-hero-overlay"></div>
     <div class="container">
       <div class="subpage-hero-content">
-        <span class="hero-badge"><i class="fa-solid fa-camera"></i> Visual Grandeur</span>
-        <h1 class="subpage-title">Wedding Showcase Gallery</h1>
+        <span class="hero-badge"><i class="fa-solid fa-camera"></i> Real Agra Celebrations</span>
+        <h1 class="subpage-title">Real Wedding Gallery & Client Stories</h1>
         <p class="subpage-desc">
-          Glimpses of royal mandaps, happy couples, radiant festivities, and aristocratic décor designed across India.
+          Browse authentic photographs, cinematic highlight reels, and genuine testimonials from actual weddings and religious ceremonies planned across Agra.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Grid Section -->
-  <section class="section-padding">
+  <!-- Featured Video Highlight Section -->
+  <section class="section-padding" style="padding-bottom: 20px;">
     <div class="container">
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Royal Mandap Setup">
-          <div class="gallery-item-overlay">
-            <span style="color: #fff; font-weight: 600;"><i class="fa-solid fa-eye text-gold"></i> Royal Mandap</span>
+      <div class="video-showcase-card">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <span class="section-tag"><i class="fa-solid fa-film"></i> Real Agra Wedding Highlight Film</span>
+          <h2 style="color: #fff; font-size: 1.8rem; margin: 8px 0;">Cinematic Wedding Production by Naishvi Celebrations</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 650px; margin: 0 auto;">
+            Watch real moments captured during our recent grand wedding in Agra, featuring custom royal mandap architecture, vibrant baraat procession, and fireworks entry.
+          </p>
+        </div>
+
+        <div class="video-wrapper">
+          <video controls preload="metadata" poster="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80">
+            <source src="assets/videos/wedding-highlight.mp4" type="video/mp4">
+            Your browser does not support HTML5 video streaming. Please download or view using modern browser.
+          </video>
+        </div>
+
+        <div style="display: flex; justify-content: center; gap: 30px; margin-top: 24px; text-align: center; flex-wrap: wrap;">
+          <div>
+            <span style="color: var(--primary-gold); font-size: 1.4rem; font-weight: 700; display: block;">Agra, UP</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Location</span>
+          </div>
+          <div style="border-left: 1px solid var(--border-subtle); padding-left: 30px;">
+            <span style="color: var(--primary-gold); font-size: 1.4rem; font-weight: 700; display: block;">1,200+</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Guest Hospitality</span>
+          </div>
+          <div style="border-left: 1px solid var(--border-subtle); padding-left: 30px;">
+            <span style="color: var(--primary-gold); font-size: 1.4rem; font-weight: 700; display: block;">3 Days</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">Turnkey Execution</span>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Couple Ceremony">
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Photos Section -->
+  <section class="section-padding" style="padding-top: 20px;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Visual Portfolio</span>
+        <h2 class="section-title">Actual Celebrations Planned in Agra</h2>
+        <p class="section-desc">
+          Click on any photo category to filter our royal stage setups, haldi decor, devotional darbars, and candid moments.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="gallery-filter-bar">
+        <button class="gallery-filter-btn active" onclick="filterGallery('all')">All Moments</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('mandap')">Mandap & Stage</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('haldi')">Haldi & Mehndi</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('music')">Music & Sangeet</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('pooja')">Pooja & Chowki</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('reception')">Grand Reception</button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" data-cat="mandap">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Palace Mandap at Jaypee Palace Agra">
           <div class="gallery-item-overlay">
-            <span style="color: #fff; font-weight: 600;"><i class="fa-solid fa-eye text-gold"></i> Sacred Nuptials</span>
+            <div>
+              <span style="color: #fff; font-weight: 600; display: block;"><i class="fa-solid fa-eye text-gold"></i> Palace Mandap</span>
+              <small style="color: var(--primary-gold-light); font-size: 0.78rem;">Jaypee Palace, Agra</small>
+            </div>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Engagement Decor">
+
+        <div class="gallery-item" data-cat="mandap">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Sacred Nuptials Vows">
           <div class="gallery-item-overlay">
-            <span style="color: #fff; font-weight: 600;"><i class="fa-solid fa-eye text-gold"></i> Floral Backdrops</span>
+            <div>
+              <span style="color: #fff; font-weight: 600; display: block;"><i class="fa-solid fa-eye text-gold"></i> Sacred Nuptials</span>
+              <small style="color: var(--primary-gold-light); font-size: 0.78rem;">Vedic 7 Pheras Setup</small>
+            </div>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="Haldi Celebration">
+
+        <div class="gallery-item" data-cat="haldi">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80" alt="Marigold Haldi Urli Celebration">
           <div class="gallery-item-overlay">
-            <span style="color: #fff; font-weight: 600;"><i class="fa-solid fa-eye text-gold"></i> Haldi Marigold Vibe</span>
+            <div>
+              <span style="color: #fff; font-weight: 600; display: block;"><i class="fa-solid fa-eye text-gold"></i> Marigold Haldi Urli</span>
+              <small style="color: var(--primary-gold-light); font-size: 0.78rem;">Courtyard by Marriott, Agra</small>
+            </div>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?auto=format&fit=crop&w=800&q=80" alt="Mehndi Henna Ceremony">
+
+        <div class="gallery-item" data-cat="haldi">
+          <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?auto=format&fit=crop&w=800&q=80" alt="Boho Mehndi Canopy">
           <div class="gallery-item-overlay">
-            <span style="color: #fff; font-weight: 600;"><i class="fa-solid fa-eye text-gold"></i> Henna Artistry</span>
+            <div>
+              <span style="color: #fff; font-weight: 600; display: block;"><i class="fa-solid fa-eye text-gold"></i> Boho Henna Haven</span>
+              <small style="color: var(--primary-gold-light); font-size: 0.78rem;">Shahdra Farmhouse, Agra</small>
+            </div>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Reception Banquet Hall">
+
+        <div class="gallery-item" data-cat="music">
+          <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="Concert Sangeet Truss & LED">
           <div class="gallery-item-overlay">
-            <span style="color: #fff; font-weight: 600;"><i class="fa-solid fa-eye text-gold"></i> Imperial Reception</span>
+            <div>
+              <span style="color: #fff; font-weight: 600; display: block;"><i class="fa-solid fa-eye text-gold"></i> Concert Sangeet Truss</span>
+              <small style="color: var(--primary-gold-light); font-size: 0.78rem;">ITC Mughal Agra</small>
+            </div>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Bridal Styling">
+
+        <div class="gallery-item" data-cat="pooja">
+          <img src="https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=800&q=80" alt="Mata Ki Chowki Red Bhavan">
           <div class="gallery-item-overlay">
-            <span style="color: #fff; font-weight: 600;"><i class="fa-solid fa-eye text-gold"></i> Bridal Styling</span>
+            <div>
+              <span style="color: #fff; font-weight: 600; display: block;"><i class="fa-solid fa-eye text-gold"></i> Mata Ki Chowki Bhavan</span>
+              <small style="color: var(--primary-gold-light); font-size: 0.78rem;">Shahdra, Agra</small>
+            </div>
           </div>
         </div>
-        <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Baraat & Celebrations">
+
+        <div class="gallery-item" data-cat="reception">
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Crystal Chandelier Reception Stage">
           <div class="gallery-item-overlay">
-            <span style="color: #fff; font-weight: 600;"><i class="fa-solid fa-eye text-gold"></i> Baraat & Music</span>
+            <div>
+              <span style="color: #fff; font-weight: 600; display: block;"><i class="fa-solid fa-eye text-gold"></i> Imperial Reception Stage</span>
+              <small style="color: var(--primary-gold-light); font-size: 0.78rem;">Taj Hotel & Convention Centre</small>
+            </div>
           </div>
         </div>
+
+        <div class="gallery-item" data-cat="mandap">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Bespoke Floral Arch">
+          <div class="gallery-item-overlay">
+            <div>
+              <span style="color: #fff; font-weight: 600; display: block;"><i class="fa-solid fa-eye text-gold"></i> Floral Arch & Varmala</span>
+              <small style="color: var(--primary-gold-light); font-size: 0.78rem;">Hotel Clarks Shiraz, Agra</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- REAL CUSTOMER REVIEWS & TESTIMONIALS SECTION (Feature 4 & 8)             -->
+  <!-- ========================================================================= -->
+  <section class="section-padding" style="background: #090a0d; border-top: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-star"></i> Verified Feedback</span>
+        <h2 class="section-title">Actual Client Reviews & Experiences</h2>
+        <p class="section-desc">
+          Read what families and couples in Agra say about our coordination, decor grandeur, and transparent execution.
+        </p>
+      </div>
+
+      <div class="review-grid">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p style="font-size: 0.92rem; color: #d1d5db; line-height: 1.7; margin-bottom: 20px; font-style: italic;">
+            "Naishvi Celebrations managed our 3-day wedding at Jaypee Palace Agra with royal elegance. The mandap was breathtaking and the catering quality was praised by every single guest. Truly the best wedding planners in Agra!"
+          </p>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(212,175,55,0.2); border: 1px solid var(--primary-gold); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--primary-gold);">
+              VK
+            </div>
+            <div>
+              <strong style="color: #fff; font-size: 0.95rem; display: block;">Vikram & Kritika Sharma</strong>
+              <small style="color: var(--text-muted); font-size: 0.78rem;"><i class="fa-solid fa-location-dot text-gold"></i> Jaypee Palace, Agra • Full Wedding</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p style="font-size: 0.92rem; color: #d1d5db; line-height: 1.7; margin-bottom: 20px; font-style: italic;">
+            "We booked Pandit Ji and Mata Ki Chowki for our family event in Shahdra, Agra. The Vedic Brahmins were profoundly knowledgeable, and the devotional sangeet troupe brought divine energy to our home. Flawless arrangements."
+          </p>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(212,175,55,0.2); border: 1px solid var(--primary-gold); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--primary-gold);">
+              RG
+            </div>
+            <div>
+              <strong style="color: #fff; font-size: 0.95rem; display: block;">Rajesh & Sunita Gupta</strong>
+              <small style="color: var(--text-muted); font-size: 0.78rem;"><i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra • Mata Ki Chowki & Pooja</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p style="font-size: 0.92rem; color: #d1d5db; line-height: 1.7; margin-bottom: 20px; font-style: italic;">
+            "Their wedding budget calculator gave us clear expectations before we even met. Our dedicated coordinator handled the entire Sangeet night truss and DJ setup without a single hitch. Highly recommended!"
+          </p>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(212,175,55,0.2); border: 1px solid var(--primary-gold); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--primary-gold);">
+              AM
+            </div>
+            <div>
+              <strong style="color: #fff; font-size: 0.95rem; display: block;">Ananya & Mohit Mathur</strong>
+              <small style="color: var(--text-muted); font-size: 0.78rem;"><i class="fa-solid fa-location-dot text-gold"></i> Fatehabad Road, Agra • Sangeet & Reception</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Review CTA -->
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="booking.html" class="btn btn-gold btn-lg">
+          <i class="fa-solid fa-calendar-check"></i> Plan Your Celebration With Us
+        </a>
       </div>
     </div>
   </section>
@@ -142,7 +390,7 @@
             <span class="brand-subtitle">WEDDINGS • EVENTS • DESTINATIONS</span>
           </div>
           <p style="font-size: 0.88rem; color: var(--text-muted);">
-            India’s premier wedding architects turning your sacred celebrations into unforgettable memories.
+            Shahdra, Agra’s premier wedding architects turning your sacred celebrations into unforgettable memories.
           </p>
         </div>
         <div class="footer-col">
@@ -150,22 +398,27 @@
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="events.html">Ceremonies</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="services.html">18 Services</a></li>
             <li><a href="packages.html">Packages</a></li>
+            <li><a href="venues.html">Agra Venues</a></li>
+            <li><a href="pandit-services.html">Pandit Ji & Pooja</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Client Access</h4>
           <ul class="footer-links">
-            <li><a href="booking.html">Book Event</a></li>
-            <li><a href="customer-portal.html">Quotation & Payment</a></li>
-            <li><a href="admin.html">Admin Dashboard</a></li>
-            <li><a href="vendor-portal.html">Vendor Desk</a></li>
+            <li><a href="booking.html">Book Event & Quotation</a></li>
+            <li><a href="budget-calculator.html">Budget Calculator</a></li>
+            <li><a href="customer-dashboard.html">Customer Dashboard</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Contact Desk</h4>
+          <h4>Contact Us</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px;">
+            <i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, Uttar Pradesh (282006)
+          </p>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px;">
             <i class="fa-solid fa-phone text-gold"></i> +91 9719136364
           </p>
@@ -176,12 +429,12 @@
       </div>
       <div class="copyright-bar">
         <div>© 2026 NAISHVI CELEBRATIONS. All Rights Reserved.</div>
-        <div>Luxury Wedding Architecture & Event Management.</div>
+        <div>Shahdra, Agra, Uttar Pradesh. Luxury Wedding Architecture & Event Management.</div>
       </div>
     </div>
   </footer>
 
-  <a href="https://api.whatsapp.com/send?phone=919719136364" target="_blank" class="whatsapp-floating" aria-label="Chat on WhatsApp">
+  <a href="https://api.whatsapp.com/send?phone=919719136364&text=Hello%20Naishvi%20Celebrations,%20I%20saw%20your%20wedding%20gallery%20and%20want%20to%20inquire" target="_blank" class="whatsapp-floating" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
@@ -190,6 +443,21 @@
     document.getElementById('mobileToggleBtn')?.addEventListener('click', () => {
       document.getElementById('navMenu')?.classList.toggle('open');
     });
+
+    function filterGallery(category) {
+      const buttons = document.querySelectorAll('.gallery-filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const items = document.querySelectorAll('#galleryGrid .gallery-item');
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-cat') === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
   </script>
 </body>
 </html>

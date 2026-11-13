@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Services | NAISHVI CELEBRATIONS</title>
-  <meta name="description" content="Explore our bespoke wedding services: Mandap architecture, royal catering, candid cinema, bridal makeup, concert DJ, and luxury logistics.">
+  <title>All 18 Wedding & Event Services | NAISHVI CELEBRATIONS Agra</title>
+  <meta name="description" content="Explore our complete catalog of 18 wedding and celebration services in Agra: Mandap architecture, royal catering, photography, bridal styling, music entertainment, Pandit Ji, venues, and luxury logistics.">
 
   <!-- Google Fonts: Playfair Display + Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,48 @@
 
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .service-num-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.2);
+      border: 1px solid var(--primary-gold);
+      color: var(--primary-gold-light);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .music-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .music-card:hover {
+      border-color: var(--primary-gold);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+    }
+    .music-icon {
+      font-size: 1.6rem;
+      color: var(--primary-gold);
+      margin-bottom: 12px;
+    }
+  </style>
 </head>
 <body>
 
@@ -24,10 +66,11 @@
     <div class="container">
       <div>
         <span><i class="fa-solid fa-phone text-gold"></i> +91 9719136364</span>
-        <span style="margin-left: 20px;"><i class="fa-solid fa-envelope text-gold"></i> royal@naishvicelebrations.com</span>
+        <span style="margin-left: 20px;"><i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, Uttar Pradesh</span>
       </div>
       <div class="top-links">
-        <a href="customer-portal.html"><i class="fa-solid fa-file-invoice"></i> Client Quotation Desk</a>
+        <a href="customer-dashboard.html"><i class="fa-solid fa-user-check"></i> Customer Dashboard</a>
+        <a href="budget-calculator.html"><i class="fa-solid fa-calculator"></i> Budget Calculator</a>
         <a href="admin.html"><i class="fa-solid fa-lock"></i> Admin Portal</a>
       </div>
     </div>
@@ -45,8 +88,12 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="events.html">Events</a></li>
-        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="services.html" class="active">18 Services</a></li>
         <li><a href="packages.html">Packages</a></li>
+        <li><a href="venues.html">Agra Venues</a></li>
+        <li><a href="pandit-services.html">Pandit Ji & Pooja</a></li>
+        <li><a href="budget-calculator.html">Calculator</a></li>
+        <li><a href="customer-dashboard.html">Track Booking</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -67,38 +114,49 @@
     <div class="subpage-hero-overlay"></div>
     <div class="container">
       <div class="subpage-hero-content">
-        <span class="hero-badge"><i class="fa-solid fa-gem"></i> Curated Matrimonial Excellence</span>
-        <h1 class="subpage-title">Comprehensive Wedding Services</h1>
+        <span class="hero-badge"><i class="fa-solid fa-gem"></i> Turnkey Wedding Production in Agra</span>
+        <h1 class="subpage-title">The Complete 18 Wedding & Event Services</h1>
         <p class="subpage-desc">
-          Every facet of your celebratory journey is planned with architectural precision, culinary mastery, and regal hospitality.
+          From palatial mandap architecture to royal banquet catering, Vedic rituals, concert DJ setups, and VIP hospitality — curated to royal standards in Agra.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Services Grid Section -->
-  <section class="section-padding">
+  <!-- Quick Category Jump Strip -->
+  <div style="background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle); padding: 14px 0;">
+    <div class="container" style="display: flex; gap: 12px; overflow-x: auto; white-space: nowrap; padding-bottom: 4px;">
+      <a href="#services-18" class="badge-tab active" style="text-decoration: none; padding: 6px 14px; background: rgba(212,175,55,0.15); border: 1px solid var(--primary-gold); color: #fff; border-radius: 20px; font-size: 0.85rem;"><i class="fa-solid fa-list-check"></i> All 18 Service Categories</a>
+      <a href="#music-entertainment" class="badge-tab" style="text-decoration: none; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted); border-radius: 20px; font-size: 0.85rem;"><i class="fa-solid fa-music"></i> Music & Live Entertainment</a>
+      <a href="pandit-services.html" class="badge-tab" style="text-decoration: none; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted); border-radius: 20px; font-size: 0.85rem;"><i class="fa-solid fa-om"></i> Pandit Ji & Religious Pooja (15 Rituals)</a>
+      <a href="venues.html" class="badge-tab" style="text-decoration: none; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted); border-radius: 20px; font-size: 0.85rem;"><i class="fa-solid fa-landmark"></i> Agra Venue Finder</a>
+      <a href="budget-calculator.html" class="badge-tab" style="text-decoration: none; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted); border-radius: 20px; font-size: 0.85rem;"><i class="fa-solid fa-calculator"></i> Wedding Budget Calculator</a>
+    </div>
+  </div>
+
+  <!-- 18 Services Grid Section -->
+  <section class="section-padding" id="services-18">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">End-To-End Inclusions</span>
-        <h2 class="section-title">Designed for Grandeur & Flawless Execution</h2>
+        <span class="section-tag">Comprehensive Production</span>
+        <h2 class="section-title">18 Service Categories Curated For Your Wedding</h2>
         <p class="section-desc">
-          Choose standalone specialized services or integrate them seamlessly into your customized wedding package.
+          Every requirement is handled in-house with certified vendors, transparent costing, and dedicated on-site supervision.
         </p>
       </div>
 
-      <div class="services-grid">
+      <div class="services-grid" id="servicesGrid18">
         <!-- Service 1 -->
         <div class="service-card">
           <div>
             <div class="service-icon-wrap"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-            <h3 class="service-title">Wedding Decoration & Mandap</h3>
+            <h3 class="service-title"><span class="service-num-badge">1</span> Wedding Decoration & Mandap</h3>
             <p class="service-desc">
-              Palatial mandap structures, bespoke theme stage backdrops, ambient architectural mood lighting, and royal floral pathways engineered to perfection.
+              Palatial mandap architecture, 30-foot royal stage sets, ambient architectural LED mood lighting, and floral entrance walkways designed to imperial standards.
             </p>
           </div>
           <div class="service-price-tag">
-            <i class="fa-solid fa-check text-gold"></i> Included in Custom Wedding Packages
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
           </div>
         </div>
 
@@ -106,13 +164,13 @@
         <div class="service-card">
           <div>
             <div class="service-icon-wrap"><i class="fa-solid fa-utensils"></i></div>
-            <h3 class="service-title">Royal Catering & Feasts</h3>
+            <h3 class="service-title"><span class="service-num-badge">2</span> Royal Catering & Feasts</h3>
             <p class="service-desc">
-              Multi-course royal feasts, live gourmet culinary stations, welcome cocktail mixology, traditional sweets, and fine banquet dining curated by master chefs.
+              Multi-course royal feasts, live gourmet live counters, authentic Agra chaat galli, international bakery & dessert lounge, and fine banquet tableware overseen by master chefs.
             </p>
           </div>
           <div class="service-price-tag">
-            <i class="fa-solid fa-check text-gold"></i> Customizable per guest count
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
           </div>
         </div>
 
@@ -120,13 +178,13 @@
         <div class="service-card">
           <div>
             <div class="service-icon-wrap"><i class="fa-solid fa-camera-retro"></i></div>
-            <h3 class="service-title">Candid Photography & 4K Cinema</h3>
+            <h3 class="service-title"><span class="service-num-badge">3</span> Photography & Cinematography</h3>
             <p class="service-desc">
-              Award-winning wedding cinematographers, candid storytellers, licensed 4K aerial drone captures, pre-wedding destination shoots, and heirloom albums.
+              Award-winning candid photographers, 4K cinematic film teasers, licensed aerial drone coverage, traditional family portraits, and handcrafted heirloom leather albums.
             </p>
           </div>
           <div class="service-price-tag">
-            <i class="fa-solid fa-check text-gold"></i> Complete multi-camera crew
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
           </div>
         </div>
 
@@ -134,96 +192,349 @@
         <div class="service-card">
           <div>
             <div class="service-icon-wrap"><i class="fa-solid fa-spa"></i></div>
-            <h3 class="service-title">Bridal Makeup & Styling</h3>
+            <h3 class="service-title"><span class="service-num-badge">4</span> Bridal Makeup & Styling</h3>
             <p class="service-desc">
-              Celebrity bridal artists providing HD airbrush makeup, bespoke hair styling, saree & lehenga draping, and pre-bridal skin rejuvenation therapies.
+              Celebrity bridal artists, HD airbrush makeup, bespoke couture hair styling, saree/lehenga draping, and pre-bridal skin rejuvenation therapies for bride, groom & family.
             </p>
           </div>
           <div class="service-price-tag">
-            <i class="fa-solid fa-check text-gold"></i> Bride, Groom & Family packages
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
           </div>
         </div>
 
         <!-- Service 5 -->
         <div class="service-card">
           <div>
-            <div class="service-icon-wrap"><i class="fa-solid fa-compact-disc"></i></div>
-            <h3 class="service-title">Concert Sound, DJ & Truss Lighting</h3>
+            <div class="service-icon-wrap"><i class="fa-solid fa-hand-sparkles"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">5</span> Mehndi Artists</h3>
             <p class="service-desc">
-              Celebrity club and wedding DJs, concert-grade line array sound, intelligent beam lighting, moving heads, LED video backdrops, and dance floors.
+              Master Rajasthani and Marwari bridal henna artists crafting intricate customized love stories, bridal figurines, and sacred motifs in 100% natural, deep-stain henna.
             </p>
           </div>
           <div class="service-price-tag">
-            <i class="fa-solid fa-check text-gold"></i> Sangeet & Reception power setups
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
           </div>
         </div>
 
         <!-- Service 6 -->
-        <div class="service-card">
+        <div class="service-card" style="border-color: rgba(212,175,55,0.4);">
           <div>
-            <div class="service-icon-wrap"><i class="fa-solid fa-landmark"></i></div>
-            <h3 class="service-title">Heritage Venue Booking & Liaison</h3>
+            <div class="service-icon-wrap"><i class="fa-solid fa-om"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">6</span> Pandit Ji & Religious Ceremonies</h3>
             <p class="service-desc">
-              Exclusive negotiated rates and access to palaces, five-star luxury resorts, heritage havelis, and beachfront properties across Jaipur, Udaipur, and Goa.
+              Learned Vedic Brahmins for Vivah Sanskar, 7 Pheras, Havan, Satyanarayan Katha, Griha Pravesh, Mata Ki Chowki, and all 15 Vedic rituals with complete Samagri arrangements.
             </p>
           </div>
-          <div class="service-price-tag">
-            <i class="fa-solid fa-check text-gold"></i> Preferred partner rates
+          <div class="service-price-tag" style="display: flex; gap: 8px;">
+            <a href="pandit-services.html" class="btn btn-gold btn-sm" style="flex: 1; text-align: center;"><i class="fa-solid fa-om"></i> 15 Pooja Details</a>
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="flex: 1; text-align: center;">Book Pandit</a>
           </div>
         </div>
 
         <!-- Service 7 -->
         <div class="service-card">
           <div>
-            <div class="service-icon-wrap"><i class="fa-solid fa-seedling"></i></div>
-            <h3 class="service-title">Exotic Floral Installations</h3>
+            <div class="service-icon-wrap"><i class="fa-solid fa-compact-disc"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">7</span> DJ, Sound & Entertainment</h3>
             <p class="service-desc">
-              Fresh imported Dutch roses, cascading orchids, white hydrangeas, traditional mogra, and marigold garlands crafted into grand floral canopies.
+              Concert-grade JBL & RCF line-array sound systems, intelligent beam truss lights, celebrity DJs, high-definition LED video walls, and interactive LED dance floors.
             </p>
           </div>
           <div class="service-price-tag">
-            <i class="fa-solid fa-check text-gold"></i> Sustainable & fresh blooms
+            <a href="#music-entertainment" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-headphones"></i> View 10 Music Options</a>
           </div>
         </div>
 
         <!-- Service 8 -->
         <div class="service-card">
           <div>
-            <div class="service-icon-wrap"><i class="fa-solid fa-gem"></i></div>
-            <h3 class="service-title">Grand Bridal Entry & Special FX</h3>
+            <div class="service-icon-wrap"><i class="fa-solid fa-drum"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">8</span> Dhol, Band & Baraat</h3>
             <p class="service-desc">
-              Signature bridal entries featuring phoolon ki chadar, low-smoke dry ice cloud fog, cold pyro sparks, musical walking ensembles, and vintage palkis.
+              High-octane Punjabi & Nashik dhol ensembles, renowned royal brass brass band, decorated vintage cars, royal horse & chariot, and choreographed baraat procession coordination.
             </p>
           </div>
           <div class="service-price-tag">
-            <i class="fa-solid fa-check text-gold"></i> 100% eco-friendly cold pyro
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
           </div>
         </div>
 
         <!-- Service 9 -->
         <div class="service-card">
           <div>
-            <div class="service-icon-wrap"><i class="fa-solid fa-car-side"></i></div>
-            <h3 class="service-title">VIP Guest Logistics & Hospitality</h3>
+            <div class="service-icon-wrap"><i class="fa-solid fa-seedling"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">9</span> Floral Decoration</h3>
             <p class="service-desc">
-              Vintage cars for royal baraat processions, luxury coaches for guest transfers, dedicated airport welcome desks, and 24/7 guest concierges.
+              Fresh imported Dutch roses, cascading orchids, white hydrangeas, traditional marigolds, and fragrant mogra installations crafted into grand floral canopies and photobooths.
             </p>
           </div>
           <div class="service-price-tag">
-            <i class="fa-solid fa-check text-gold"></i> Seamless travel coordination
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
+          </div>
+        </div>
+
+        <!-- Service 10 -->
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap"><i class="fa-solid fa-gem"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">10</span> Bridal & Groom Entry</h3>
+            <p class="service-desc">
+              Signature grand entries featuring fresh phoolon ki chadar, royal palki, low-smoke dry ice cloud fog, 100% eco-friendly cold pyro sparklers, and synchronized musical ensembles.
+            </p>
+          </div>
+          <div class="service-price-tag">
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
+          </div>
+        </div>
+
+        <!-- Service 11 -->
+        <div class="service-card" style="border-color: rgba(212,175,55,0.4);">
+          <div>
+            <div class="service-icon-wrap"><i class="fa-solid fa-landmark"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">11</span> Wedding Venue Booking</h3>
+            <p class="service-desc">
+              Negotiated preferential partner rates across Agra’s finest 5-star luxury hotels, heritage palace properties, lush banquet lawns, and farmhouses along Fatehabad Road and Shahdra.
+            </p>
+          </div>
+          <div class="service-price-tag" style="display: flex; gap: 8px;">
+            <a href="venues.html" class="btn btn-gold btn-sm" style="flex: 1; text-align: center;"><i class="fa-solid fa-building"></i> Agra Venue Finder</a>
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="flex: 1; text-align: center;">Book Venue</a>
+          </div>
+        </div>
+
+        <!-- Service 12 -->
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap"><i class="fa-solid fa-campground"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">12</span> Tent, Furniture & Lighting</h3>
+            <p class="service-desc">
+              All-weather German hanger air-conditioned superstructures, imperial Maharaja couches, golden Chiavari chairs, crystal chandeliers, and waterproof canopy draping.
+            </p>
+          </div>
+          <div class="service-price-tag">
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
+          </div>
+        </div>
+
+        <!-- Service 13 -->
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap"><i class="fa-solid fa-envelope-open-text"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">13</span> Wedding Invitations & Gifts</h3>
+            <p class="service-desc">
+              Bespoke laser-cut invitation suites, animated video cards, custom Mithai hampers, royal dry-fruit gift boxes, and customized return favors for distinguished guests.
+            </p>
+          </div>
+          <div class="service-price-tag">
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
+          </div>
+        </div>
+
+        <!-- Service 14 -->
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap"><i class="fa-solid fa-person-booth"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">14</span> Dance Choreography & Anchoring</h3>
+            <p class="service-desc">
+              Professional Sangeet choreographers, celebrity bilingual anchors and emcees, concept scripts, family group dance coaching, and polished stage hosting.
+            </p>
+          </div>
+          <div class="service-price-tag">
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
+          </div>
+        </div>
+
+        <!-- Service 15 -->
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap"><i class="fa-solid fa-car-side"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">15</span> Transportation & Logistics</h3>
+            <p class="service-desc">
+              Royal vintage cars for groom's baraat procession, luxury Mercedes/Audi convoys, air-conditioned luxury coaches for guest transfers, and Agra railway station/airport liaison.
+            </p>
+          </div>
+          <div class="service-price-tag">
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
+          </div>
+        </div>
+
+        <!-- Service 16 -->
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap"><i class="fa-solid fa-user-shield"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">16</span> Guest Hospitality & Security</h3>
+            <p class="service-desc">
+              Dedicated hotel welcome helpdesks, personalized baggage handling, RSVP coordination, professional security bouncers, and seamless valet parking operations.
+            </p>
+          </div>
+          <div class="service-price-tag">
+            <a href="booking.html" class="btn btn-outline-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-plus"></i> Select for Package</a>
+          </div>
+        </div>
+
+        <!-- Service 17 -->
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap"><i class="fa-solid fa-clipboard-check"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">17</span> Complete Wedding Planning</h3>
+            <p class="service-desc">
+              Turnkey 360-degree planning: budget management, vendor coordination, detailed timeline scheduling, license approvals, rehearsal supervision, and day-of-event execution.
+            </p>
+          </div>
+          <div class="service-price-tag">
+            <a href="booking.html" class="btn btn-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-crown"></i> Full Turnkey Service</a>
+          </div>
+        </div>
+
+        <!-- Service 18 -->
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap"><i class="fa-solid fa-plane-departure"></i></div>
+            <h3 class="service-title"><span class="service-num-badge">18</span> Destination Wedding Management</h3>
+            <p class="service-desc">
+              Flawless destination weddings orchestrated at royal palaces, heritage properties, and luxury resorts in Agra, Taj Nagari, and across Rajasthan with full guest hospitality.
+            </p>
+          </div>
+          <div class="service-price-tag">
+            <a href="booking.html" class="btn btn-gold btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-calendar-check"></i> Inquire Destination</a>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- CTA Box -->
-      <div style="margin-top: 60px; background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 48px; text-align: center; box-shadow: var(--shadow-luxury);">
-        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 12px;">Ready to Curate Your Wedding Services?</h3>
-        <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 28px;">
-          Build your custom ceremony combination and receive an itemized official quotation with transparent pricing.
+  <!-- ========================================================================= -->
+  <!-- DEDICATED MUSIC & LIVE ENTERTAINMENT SECTION (Image 5)                    -->
+  <!-- ========================================================================= -->
+  <section class="section-padding" id="music-entertainment" style="background: #090a0d; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag" style="background: rgba(212,175,55,0.15); border: 1px solid var(--primary-gold);"><i class="fa-solid fa-guitar"></i> Exclusive Agra Entertainment</span>
+        <h2 class="section-title">MUSIC & LIVE ENTERTAINMENT</h2>
+        <p class="section-desc">
+          Live Music • Celebrity Artists • DJ • Orchestra • Cultural Performances • Agra Services
         </p>
+      </div>
+
+      <div class="music-grid">
+        <!-- Music 1 -->
+        <div class="music-card">
+          <div class="music-icon"><i class="fa-solid fa-microphone-lines"></i></div>
+          <h4 style="color: #fff; margin-bottom: 6px;">1. Ghazal Night</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            Soulful live Mehfil-e-Ghazal singers with harmonium, tabla, and acoustic instruments creating a serene poetic ambiance.
+          </p>
+        </div>
+
+        <!-- Music 2 -->
+        <div class="music-card">
+          <div class="music-icon"><i class="fa-solid fa-hands-praying"></i></div>
+          <h4 style="color: #fff; margin-bottom: 6px;">2. Jagran & Bhajan Sandhya</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            Devotional singer troupes, akhand darbar, live dholak, chimta, and spiritual aarti for uplifting divine celebrations.
+          </p>
+        </div>
+
+        <!-- Music 3 -->
+        <div class="music-card">
+          <div class="music-icon"><i class="fa-solid fa-fire"></i></div>
+          <h4 style="color: #fff; margin-bottom: 6px;">3. Mata Ki Chowki</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            Traditional red floral darbar setup, devotional sangeet, and live bhajans seeking blessings for the bride and groom.
+          </p>
+        </div>
+
+        <!-- Music 4 -->
+        <div class="music-card">
+          <div class="music-icon"><i class="fa-solid fa-microphone"></i></div>
+          <h4 style="color: #fff; margin-bottom: 6px;">4. Karaoke Night</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            Engaging family interactive singing setups with dual screens, wireless microphones, curated song playlists & host.
+          </p>
+        </div>
+
+        <!-- Music 5 -->
+        <div class="music-card">
+          <div class="music-icon"><i class="fa-solid fa-guitar"></i></div>
+          <h4 style="color: #fff; margin-bottom: 6px;">5. Instrumental Music</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            Melodious classical ensembles: Shehnai for baraat, Sitar, Flute, and live Violinists for dining and reception hours.
+          </p>
+        </div>
+
+        <!-- Music 6 -->
+        <div class="music-card">
+          <div class="music-icon"><i class="fa-solid fa-sun"></i></div>
+          <h4 style="color: #fff; margin-bottom: 6px;">6. Rajasthani Folk Music</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            Authentic Manganiyar folk singers, Morchang players, and graceful Chari fire dancers for royal traditional charm.
+          </p>
+        </div>
+
+        <!-- Music 7 -->
+        <div class="music-card">
+          <div class="music-icon"><i class="fa-solid fa-music"></i></div>
+          <h4 style="color: #fff; margin-bottom: 6px;">7. Acoustic Music</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            Unplugged Bollywood and Sufi acoustic bands for intimate cocktail parties, poolside mehendi, and sundowner hours.
+          </p>
+        </div>
+
+        <!-- Music 8 -->
+        <div class="music-card">
+          <div class="music-icon"><i class="fa-solid fa-people-group"></i></div>
+          <h4 style="color: #fff; margin-bottom: 6px;">8. Wedding Sangeet Performances</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            Custom audio soundtracks, concert sound engineering, choreographed family group dances & stage entries.
+          </p>
+        </div>
+
+        <!-- Music 9 -->
+        <div class="music-card">
+          <div class="music-icon"><i class="fa-solid fa-person-running"></i></div>
+          <h4 style="color: #fff; margin-bottom: 6px;">9. Dance Troupe</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            Professional Bollywood dancers, LED Tron light dancers, Russian performers, and international welcome troupes.
+          </p>
+        </div>
+
+        <!-- Music 10 -->
+        <div class="music-card">
+          <div class="music-icon"><i class="fa-solid fa-bullhorn"></i></div>
+          <h4 style="color: #fff; margin-bottom: 6px;">10. Anchor & Music Host</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            High-energy bilingual celebrity anchors to engage guests, conduct interactive games, and host functions seamlessly.
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 36px;">
         <a href="booking.html" class="btn btn-gold btn-lg">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> Customize Your Wedding Package
+          <i class="fa-solid fa-calendar-check"></i> Book Live Music & Entertainment
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Box -->
+  <section class="section-padding">
+    <div class="container">
+      <div style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 48px; text-align: center; box-shadow: var(--shadow-luxury);">
+        <h3 style="font-size: 2rem; color: #fff; margin-bottom: 12px;">Plan Your Custom Event in Agra Today</h3>
+        <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto 28px;">
+          Build your custom ceremony combination, calculate estimated budgets, and receive an itemized official quotation with transparent pricing.
+        </p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="booking.html" class="btn btn-gold btn-lg">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Customize Your Package
+          </a>
+          <a href="budget-calculator.html" class="btn btn-outline-gold btn-lg">
+            <i class="fa-solid fa-calculator"></i> Calculate Wedding Budget
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=919719136364&text=Hello%20Naishvi%20Celebrations,%20I%20want%20to%20inquire%20about%20your%20wedding%20services%20in%20Agra" class="btn btn-sm" style="background: #25D366; color: #fff; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; padding: 14px 24px; border-radius: var(--radius-sm);" target="_blank">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> WhatsApp Us Directly
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -238,7 +549,7 @@
             <span class="brand-subtitle">WEDDINGS • EVENTS • DESTINATIONS</span>
           </div>
           <p style="font-size: 0.88rem; color: var(--text-muted);">
-            India’s bespoke wedding architects turning lifelong dreams into royal celebrations.
+            Shahdra, Agra’s bespoke wedding architects turning lifelong dreams into royal celebrations.
           </p>
         </div>
         <div class="footer-col">
@@ -246,22 +557,28 @@
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="events.html">Ceremonies</a></li>
+            <li><a href="events.html">Events (14 Auspicious Functions)</a></li>
+            <li><a href="services.html">18 Services</a></li>
             <li><a href="packages.html">Packages</a></li>
-            <li><a href="gallery.html">Portfolio</a></li>
+            <li><a href="venues.html">Agra Venues</a></li>
+            <li><a href="pandit-services.html">Pandit Ji & Pooja</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Client Access</h4>
+          <h4>Client Tools</h4>
           <ul class="footer-links">
-            <li><a href="booking.html">Book Event</a></li>
-            <li><a href="customer-portal.html">Quotation & Payment</a></li>
-            <li><a href="admin.html">Admin Dashboard</a></li>
+            <li><a href="budget-calculator.html">Budget Calculator</a></li>
+            <li><a href="booking.html">Book Event & Quotation</a></li>
+            <li><a href="customer-dashboard.html">Customer Dashboard</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
             <li><a href="vendor-portal.html">Vendor Desk</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Inquiries</h4>
+          <h4>Contact Us</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px;">
+            <i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, Uttar Pradesh (282006)
+          </p>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px;">
             <i class="fa-solid fa-phone text-gold"></i> +91 9719136364
           </p>
@@ -272,12 +589,12 @@
       </div>
       <div class="copyright-bar">
         <div>© 2026 NAISHVI CELEBRATIONS. All Rights Reserved.</div>
-        <div>Luxury Wedding Architecture & Event Management.</div>
+        <div>Shahdra, Agra, Uttar Pradesh. Luxury Wedding Architecture & Event Management.</div>
       </div>
     </div>
   </footer>
 
-  <a href="https://api.whatsapp.com/send?phone=919719136364" target="_blank" class="whatsapp-floating" aria-label="Chat on WhatsApp">
+  <a href="https://api.whatsapp.com/send?phone=919719136364&text=Hello%20Naishvi%20Celebrations,%20I%20am%20interested%20in%20your%20services" target="_blank" class="whatsapp-floating" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 

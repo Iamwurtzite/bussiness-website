@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Your Event & Request Quotation | NAISHVI CELEBRATIONS</title>
-  <meta name="description" content="Reserve your wedding dates with Naishvi Celebrations. Build your custom ceremony combination and receive an instant quotation.">
+  <title>Book Event & Custom Package Builder | NAISHVI CELEBRATIONS Agra</title>
+  <meta name="description" content="Book your wedding, religious ceremonies, and private events in Agra. Build your custom package with transparent pricing, instant quotation, and WhatsApp booking.">
 
   <!-- Google Fonts: Playfair Display + Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,20 +24,20 @@
       border-radius: var(--radius-lg);
       padding: 44px;
       box-shadow: var(--shadow-luxury);
-      max-width: 980px;
+      max-width: 1040px;
       margin: 0 auto;
     }
     .event-pills-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
       margin-bottom: 28px;
     }
     .event-pill-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 14px 18px;
+      padding: 12px 16px;
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-md);
@@ -52,9 +52,9 @@
     }
     .service-checkboxes-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
     .service-checkbox-card {
       padding: 16px;
@@ -71,13 +71,37 @@
       border-color: var(--primary-gold);
       background: rgba(212, 175, 55, 0.12);
     }
+    .custom-estimate-summary {
+      background: #090a0d;
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .date-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid #25d366;
+      color: #25d366;
+      font-weight: 600;
+    }
     @media (max-width: 768px) {
-      .event-pills-grid,
-      .service-checkboxes-grid {
-        grid-template-columns: 1fr;
-      }
       .booking-engine-wrapper {
-        padding: 24px 18px;
+        padding: 24px 16px;
+      }
+      .custom-estimate-summary {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -89,10 +113,11 @@
     <div class="container">
       <div>
         <span><i class="fa-solid fa-phone text-gold"></i> +91 9719136364</span>
-        <span style="margin-left: 20px;"><i class="fa-solid fa-envelope text-gold"></i> royal@naishvicelebrations.com</span>
+        <span style="margin-left: 20px;"><i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, Uttar Pradesh</span>
       </div>
       <div class="top-links">
-        <a href="customer-portal.html"><i class="fa-solid fa-file-invoice"></i> Client Quotation Desk</a>
+        <a href="customer-dashboard.html"><i class="fa-solid fa-user-check"></i> Customer Dashboard</a>
+        <a href="budget-calculator.html"><i class="fa-solid fa-calculator"></i> Budget Calculator</a>
         <a href="admin.html"><i class="fa-solid fa-lock"></i> Admin Portal</a>
       </div>
     </div>
@@ -110,8 +135,12 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="events.html">Events</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html">18 Services</a></li>
         <li><a href="packages.html">Packages</a></li>
+        <li><a href="venues.html">Agra Venues</a></li>
+        <li><a href="pandit-services.html">Pandit Ji & Pooja</a></li>
+        <li><a href="budget-calculator.html">Calculator</a></li>
+        <li><a href="customer-dashboard.html">Track Booking</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -132,201 +161,331 @@
     <div class="subpage-hero-overlay"></div>
     <div class="container">
       <div class="subpage-hero-content">
-        <span class="hero-badge"><i class="fa-solid fa-calendar-check"></i> Instant Booking & Quotation Engine</span>
-        <h1 class="subpage-title">Book Your Wedding Event</h1>
+        <span class="hero-badge"><i class="fa-solid fa-sliders"></i> Custom Package Builder & Official Quotation</span>
+        <h1 class="subpage-title">Book Your Event & Request Quotation</h1>
         <p class="subpage-desc">
-          Customize your ceremonial events, select desired services, and submit your booking to receive an immediate formal quotation from our master planners.
+          Select your ceremonial events, pick custom services, check date availability in Agra, and receive an instant quotation or book via WhatsApp.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Main Booking Form Section -->
+  <!-- Quick Action Navigation Tabs -->
+  <div style="background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle); padding: 14px 0;">
+    <div class="container" style="display: flex; gap: 12px; overflow-x: auto; white-space: nowrap; padding-bottom: 4px;">
+      <a href="booking.html" class="badge-tab active" style="text-decoration: none; padding: 6px 14px; background: rgba(212,175,55,0.15); border: 1px solid var(--primary-gold); color: #fff; border-radius: 20px; font-size: 0.85rem;"><i class="fa-solid fa-sliders"></i> Custom Package Builder</a>
+      <a href="budget-calculator.html" class="badge-tab" style="text-decoration: none; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted); border-radius: 20px; font-size: 0.85rem;"><i class="fa-solid fa-calculator"></i> Wedding Budget Calculator</a>
+      <a href="pandit-services.html" class="badge-tab" style="text-decoration: none; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted); border-radius: 20px; font-size: 0.85rem;"><i class="fa-solid fa-om"></i> Book Pandit Ji (15 Pooja Types)</a>
+      <a href="venues.html" class="badge-tab" style="text-decoration: none; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted); border-radius: 20px; font-size: 0.85rem;"><i class="fa-solid fa-landmark"></i> Agra Venue Finder</a>
+      <a href="customer-dashboard.html" class="badge-tab" style="text-decoration: none; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted); border-radius: 20px; font-size: 0.85rem;"><i class="fa-solid fa-user-check"></i> Track Active Booking</a>
+    </div>
+  </div>
+
+  <!-- Main Booking Wizard Section -->
   <section class="section-padding">
     <div class="container">
       <div class="booking-engine-wrapper">
         <form id="weddingWizardForm">
-          <!-- Section 1: Event Selection -->
+          
+          <!-- Section 1: All 14 Auspicious Events (Image 1 Feature 1) -->
           <div style="margin-bottom: 36px;">
-            <h3 style="font-size: 1.4rem; color: #eeddb0; margin-bottom: 8px;">
-              <span class="gold-gradient-text">1.</span> Select Your Ceremonial Events
-            </h3>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 8px;">
+              <h3 style="font-size: 1.35rem; color: #eeddb0;">
+                <span class="gold-gradient-text">1.</span> Select Your Auspicious Functions
+              </h3>
+              <span style="font-size: 0.82rem; color: var(--primary-gold-light);">Multi-Event Selection Enabled</span>
+            </div>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">
-              Select one or multiple ceremonies you wish Naishvi Celebrations to orchestrate:
+              Select one or multiple ceremonies you wish Naishvi Celebrations to orchestrate in Agra:
             </p>
+
             <div class="event-pills-grid">
               <label class="event-pill-item">
-                <input type="checkbox" class="event-pill-checkbox" value="Engagement">
+                <input type="checkbox" class="event-pill-checkbox" value="Roka Ceremony">
                 <div>
-                  <strong>Engagement Ceremony</strong>
-                  <div style="font-size: 0.75rem; color: var(--text-muted);">Ring ceremony & floral stage</div>
+                  <strong>Roka Ceremony</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Shagun & family dining</div>
                 </div>
               </label>
+
               <label class="event-pill-item">
-                <input type="checkbox" class="event-pill-checkbox" value="Haldi">
+                <input type="checkbox" class="event-pill-checkbox" value="Royal Engagement">
+                <div>
+                  <strong>Engagement</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Ring exchange & pastel stage</div>
+                </div>
+              </label>
+
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Haldi Celebration">
                 <div>
                   <strong>Haldi Celebration</strong>
-                  <div style="font-size: 0.75rem; color: var(--text-muted);">Marigold decor & brass urli</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Marigold decor & brass urli</div>
                 </div>
               </label>
+
               <label class="event-pill-item">
-                <input type="checkbox" class="event-pill-checkbox" value="Mehndi">
+                <input type="checkbox" class="event-pill-checkbox" value="Mehndi Night">
                 <div>
                   <strong>Mehndi Night</strong>
-                  <div style="font-size: 0.75rem; color: var(--text-muted);">Henna artists & carnival stalls</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Henna artists & carnival stalls</div>
                 </div>
               </label>
+
               <label class="event-pill-item">
-                <input type="checkbox" class="event-pill-checkbox" value="Sangeet">
+                <input type="checkbox" class="event-pill-checkbox" value="Sangeet Night">
                 <div>
                   <strong>Sangeet Evening</strong>
-                  <div style="font-size: 0.75rem; color: var(--text-muted);">Concert sound, LED & DJ</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Concert sound, LED & DJ</div>
                 </div>
               </label>
+
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Cocktail Party">
+                <div>
+                  <strong>Cocktail & Party</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Modern bar & club sound</div>
+                </div>
+              </label>
+
               <label class="event-pill-item selected">
-                <input type="checkbox" class="event-pill-checkbox" value="Wedding" checked>
+                <input type="checkbox" class="event-pill-checkbox" value="Sacred Wedding" checked>
                 <div>
                   <strong>Sacred Wedding</strong>
-                  <div style="font-size: 0.75rem; color: var(--text-muted);">Royal mandap & baraat entry</div>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Royal mandap & baraat entry</div>
                 </div>
               </label>
+
               <label class="event-pill-item">
-                <input type="checkbox" class="event-pill-checkbox" value="Reception">
+                <input type="checkbox" class="event-pill-checkbox" value="Grand Reception">
                 <div>
-                  <strong>Imperial Reception</strong>
-                  <div style="font-size: 0.75rem; color: var(--text-muted);">Grand feast & banquet stage</div>
+                  <strong>Grand Reception</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Grand feast & banquet stage</div>
+                </div>
+              </label>
+
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Mata Ki Chowki">
+                <div>
+                  <strong>Mata Ki Chowki</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Red bhavan & live bhajans</div>
+                </div>
+              </label>
+
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Jagran & Bhajan Sandhya">
+                <div>
+                  <strong>Jagran & Sandhya</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">All-night divine kirtan</div>
+                </div>
+              </label>
+
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Birthday Celebration">
+                <div>
+                  <strong>Luxury Birthday</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Theme balloon & marquee</div>
+                </div>
+              </label>
+
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Anniversary">
+                <div>
+                  <strong>Anniversary</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Candlelit renewal of vows</div>
+                </div>
+              </label>
+
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Baby Shower">
+                <div>
+                  <strong>Baby Shower</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Pastel Godh Bharai rituals</div>
+                </div>
+              </label>
+
+              <label class="event-pill-item">
+                <input type="checkbox" class="event-pill-checkbox" value="Corporate Event">
+                <div>
+                  <strong>Corporate Gala</strong>
+                  <div style="font-size: 0.72rem; color: var(--text-muted);">Stage, AV & awards dinner</div>
                 </div>
               </label>
             </div>
           </div>
 
-          <!-- Section 2: Services Selection -->
-          <div style="margin-bottom: 36px;">
-            <h3 style="font-size: 1.4rem; color: #eeddb0; margin-bottom: 8px;">
-              <span class="gold-gradient-text">2.</span> Select Desired Services
-            </h3>
+          <!-- Section 2: Custom Package Builder (Image 2 Feature 6) -->
+          <div style="margin-bottom: 36px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 28px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 8px;">
+              <h3 style="font-size: 1.35rem; color: #eeddb0;">
+                <span class="gold-gradient-text">2.</span> Custom Package Builder (Select Your Choice)
+              </h3>
+              <span class="badge-gold"><i class="fa-solid fa-calculator"></i> Real-time Subtotal</span>
+            </div>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px;">
-              Choose the specialized capabilities you need us to provide:
+              Select decoration, food, DJ, photography, and Pandit Ji according to your exact preference:
             </p>
+
             <div class="service-checkboxes-grid">
-              <label class="service-checkbox-card selected">
-                <input type="checkbox" class="service-checkbox-input" value="Wedding Decoration" checked>
+              <label class="service-checkbox-card selected" data-cost="35000">
+                <input type="checkbox" class="service-checkbox-input" value="Wedding Decoration & Mandap" checked>
                 <div>
-                  <strong>Wedding Decoration</strong>
-                  <div style="font-size: 0.78rem; color: var(--text-muted);">Theme mandap & stage lighting</div>
+                  <strong>Mandap & Stage Decor</strong>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">Theme stage, lighting & entryway</div>
+                  <div style="font-size: 0.78rem; color: var(--primary-gold); margin-top: 4px;">+ ₹35,000</div>
                 </div>
               </label>
-              <label class="service-checkbox-card selected">
-                <input type="checkbox" class="service-checkbox-input" value="Catering & Feasts" checked>
+
+              <label class="service-checkbox-card selected" data-cost="60000">
+                <input type="checkbox" class="service-checkbox-input" value="Royal Catering & Feasts" checked>
                 <div>
-                  <strong>Catering & Feasts</strong>
-                  <div style="font-size: 0.78rem; color: var(--text-muted);">Multi-cuisine luxury royal buffet</div>
+                  <strong>Royal Catering & Buffet</strong>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">Multi-cuisine royal feast & chaat</div>
+                  <div style="font-size: 0.78rem; color: var(--primary-gold); margin-top: 4px;">+ ₹60,000</div>
                 </div>
               </label>
-              <label class="service-checkbox-card selected">
-                <input type="checkbox" class="service-checkbox-input" value="Photography & Cinema" checked>
+
+              <label class="service-checkbox-card selected" data-cost="45000">
+                <input type="checkbox" class="service-checkbox-input" value="Photography & Cinematography" checked>
                 <div>
-                  <strong>Photography & Cinema</strong>
-                  <div style="font-size: 0.78rem; color: var(--text-muted);">Candid, 4K film & aerial drone</div>
+                  <strong>Photography & 4K Cinema</strong>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">Candid, teaser film & drone</div>
+                  <div style="font-size: 0.78rem; color: var(--primary-gold); margin-top: 4px;">+ ₹45,000</div>
                 </div>
               </label>
-              <label class="service-checkbox-card">
+
+              <label class="service-checkbox-card" data-cost="25000">
                 <input type="checkbox" class="service-checkbox-input" value="Bridal Makeup & Styling">
                 <div>
                   <strong>Bridal Makeup & Styling</strong>
-                  <div style="font-size: 0.78rem; color: var(--text-muted);">HD airbrush & hair artistry</div>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">HD airbrush & saree draping</div>
+                  <div style="font-size: 0.78rem; color: var(--primary-gold); margin-top: 4px;">+ ₹25,000</div>
                 </div>
               </label>
-              <label class="service-checkbox-card selected">
-                <input type="checkbox" class="service-checkbox-input" value="DJ & Sound / Music" checked>
+
+              <label class="service-checkbox-card selected" data-cost="30000">
+                <input type="checkbox" class="service-checkbox-input" value="DJ, Sound & Truss Lights" checked>
                 <div>
-                  <strong>DJ, Sound & Lights</strong>
-                  <div style="font-size: 0.78rem; color: var(--text-muted);">Line array & intelligent truss</div>
+                  <strong>DJ, Sound & Truss Lights</strong>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">Line array, beam truss & DJ</div>
+                  <div style="font-size: 0.78rem; color: var(--primary-gold); margin-top: 4px;">+ ₹30,000</div>
                 </div>
               </label>
-              <label class="service-checkbox-card">
-                <input type="checkbox" class="service-checkbox-input" value="Venue Booking & Negotiation">
+
+              <label class="service-checkbox-card" data-cost="15000">
+                <input type="checkbox" class="service-checkbox-input" value="Pandit Ji & Religious Ceremonies">
                 <div>
-                  <strong>Venue Booking</strong>
-                  <div style="font-size: 0.78rem; color: var(--text-muted);">Palaces, resorts & banquet spaces</div>
+                  <strong>Pandit Ji & Vedic Pooja</strong>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">Vivah Sanskar / Havan + Samagri</div>
+                  <div style="font-size: 0.78rem; color: var(--primary-gold); margin-top: 4px;">+ ₹15,000</div>
                 </div>
               </label>
-              <label class="service-checkbox-card">
-                <input type="checkbox" class="service-checkbox-input" value="Exotic Flower Decoration">
+
+              <label class="service-checkbox-card" data-cost="25000">
+                <input type="checkbox" class="service-checkbox-input" value="Royal Dhol, Band & Baraat">
                 <div>
-                  <strong>Flower Decoration</strong>
-                  <div style="font-size: 0.78rem; color: var(--text-muted);">Imported roses & fresh florals</div>
+                  <strong>Royal Dhol, Band & Baraat</strong>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">Punjabi dhol & brass band procession</div>
+                  <div style="font-size: 0.78rem; color: var(--primary-gold); margin-top: 4px;">+ ₹25,000</div>
                 </div>
               </label>
-              <label class="service-checkbox-card">
-                <input type="checkbox" class="service-checkbox-input" value="Bridal Entry & Special Effects">
+
+              <label class="service-checkbox-card" data-cost="20000">
+                <input type="checkbox" class="service-checkbox-input" value="Floral Canopies & Installations">
                 <div>
-                  <strong>Bridal Entry & FX</strong>
-                  <div style="font-size: 0.78rem; color: var(--text-muted);">Cold pyro & cloud fog entry</div>
+                  <strong>Exotic Floral Decoration</strong>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">Imported Dutch roses & orchids</div>
+                  <div style="font-size: 0.78rem; color: var(--primary-gold); margin-top: 4px;">+ ₹20,000</div>
                 </div>
               </label>
-              <label class="service-checkbox-card">
-                <input type="checkbox" class="service-checkbox-input" value="Guest Transportation & Logistics">
+
+              <label class="service-checkbox-card" data-cost="18000">
+                <input type="checkbox" class="service-checkbox-input" value="Bridal & Groom Entry FX">
                 <div>
-                  <strong>Guest Transportation</strong>
-                  <div style="font-size: 0.78rem; color: var(--text-muted);">Vintage baraat cars & coaches</div>
+                  <strong>Grand Bridal Entry FX</strong>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">Cold pyro & dry ice cloud fog</div>
+                  <div style="font-size: 0.78rem; color: var(--primary-gold); margin-top: 4px;">+ ₹18,000</div>
                 </div>
               </label>
+
+              <label class="service-checkbox-card" data-cost="20000">
+                <input type="checkbox" class="service-checkbox-input" value="Agra Luxury Venue Liaison">
+                <div>
+                  <strong>Agra Venue Booking Liaison</strong>
+                  <div style="font-size: 0.76rem; color: var(--text-muted);">Preferential hotel partner discount</div>
+                  <div style="font-size: 0.78rem; color: var(--primary-gold); margin-top: 4px;">+ ₹20,000</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Custom Estimate Bar -->
+            <div class="custom-estimate-summary">
+              <div>
+                <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Estimated Custom Package Total:</span>
+                <span id="customEstimatedTotal" style="font-size: 1.8rem; font-weight: 700; color: var(--primary-gold-light);">₹1,70,000</span>
+                <span style="font-size: 0.78rem; color: var(--text-muted); display: block; margin-top: 2px;">*Includes on-site coordinator & turnkey execution in Agra</span>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <a href="budget-calculator.html" class="btn btn-outline-gold btn-sm"><i class="fa-solid fa-calculator"></i> Detailed Budget Breakdown</a>
+              </div>
             </div>
           </div>
 
           <!-- Section 3: Package Tier Preference -->
           <div style="margin-bottom: 36px;">
-            <h3 style="font-size: 1.4rem; color: #eeddb0; margin-bottom: 8px;">
-              <span class="gold-gradient-text">3.</span> Preferred Package Tier
+            <h3 style="font-size: 1.35rem; color: #eeddb0; margin-bottom: 8px;">
+              <span class="gold-gradient-text">3.</span> Baseline Package Tier Preference
             </h3>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 18px;">
-              Choose the baseline package tier that best aligns with your vision:
+              Select the baseline tier that best reflects your scale of celebration:
             </p>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-              <div class="package-card" style="padding: 24px;">
-                <label style="cursor: pointer;">
-                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                    <h4 style="color: #fff; font-size: 1.25rem;">Silver Package</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+              <div class="package-card" style="padding: 22px;">
+                <label style="cursor: pointer; display: block;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                    <h4 style="color: #fff; font-size: 1.2rem;">Silver Package</h4>
                     <input type="radio" name="selectedPackageRadio" value="silver" style="accent-color: var(--primary-gold); transform: scale(1.3);">
                   </div>
-                  <div style="font-size: 1.6rem; font-weight: 700; color: var(--primary-gold-light); margin-bottom: 6px;">₹49,999 <span style="font-size: 0.8rem; font-weight: 400; color: #a0a5b5;">onwards</span></div>
-                  <p style="font-size: 0.82rem; color: var(--text-muted);">Essential arrangements for single events.</p>
+                  <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-gold-light); margin-bottom: 6px;">₹49,999 <span style="font-size: 0.75rem; font-weight: 400; color: #a0a5b5;">onwards</span></div>
+                  <p style="font-size: 0.8rem; color: var(--text-muted);">Essential arrangements for single events & intimate gatherings.</p>
                 </label>
               </div>
 
-              <div class="package-card popular" style="padding: 24px;">
-                <div class="popular-badge" style="top: -12px;">Popular</div>
-                <label style="cursor: pointer;">
-                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                    <h4 style="color: #fff; font-size: 1.25rem;">Gold Package</h4>
+              <div class="package-card popular" style="padding: 22px;">
+                <div class="popular-badge" style="top: -12px;">Most Popular</div>
+                <label style="cursor: pointer; display: block;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                    <h4 style="color: #fff; font-size: 1.2rem;">Gold Package</h4>
                     <input type="radio" name="selectedPackageRadio" value="gold" checked style="accent-color: var(--primary-gold); transform: scale(1.3);">
                   </div>
-                  <div style="font-size: 1.6rem; font-weight: 700; color: var(--primary-gold-light); margin-bottom: 6px;">₹99,999 <span style="font-size: 0.8rem; font-weight: 400; color: #a0a5b5;">onwards</span></div>
-                  <p style="font-size: 0.82rem; color: #d1d5db;">Premium decoration and multi-event management.</p>
+                  <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-gold-light); margin-bottom: 6px;">₹99,999 <span style="font-size: 0.75rem; font-weight: 400; color: #a0a5b5;">onwards</span></div>
+                  <p style="font-size: 0.8rem; color: #d1d5db;">Comprehensive decoration, stage, photography & DJ sound.</p>
                 </label>
               </div>
 
-              <div class="package-card" style="padding: 24px;">
-                <label style="cursor: pointer;">
-                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-                    <h4 style="color: #fff; font-size: 1.25rem;">Platinum Package</h4>
+              <div class="package-card" style="padding: 22px;">
+                <label style="cursor: pointer; display: block;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                    <h4 style="color: #fff; font-size: 1.2rem;">Platinum Package</h4>
                     <input type="radio" name="selectedPackageRadio" value="platinum" style="accent-color: var(--primary-gold); transform: scale(1.3);">
                   </div>
-                  <div style="font-size: 1.6rem; font-weight: 700; color: var(--primary-gold-light); margin-bottom: 6px;">₹1,99,999 <span style="font-size: 0.8rem; font-weight: 400; color: #a0a5b5;">onwards</span></div>
-                  <p style="font-size: 0.82rem; color: var(--text-muted);">Royal bespoke luxury wedding extravaganza.</p>
+                  <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-gold-light); margin-bottom: 6px;">₹1,99,999 <span style="font-size: 0.75rem; font-weight: 400; color: #a0a5b5;">onwards</span></div>
+                  <p style="font-size: 0.8rem; color: var(--text-muted);">Royal bespoke luxury wedding extravaganza with full turnkey coordination.</p>
                 </label>
               </div>
             </div>
           </div>
 
-          <!-- Section 4: Customer & Venue Details -->
+          <!-- Section 4: Customer Details & Date Availability Checker -->
           <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 32px; margin-bottom: 28px;">
-            <h3 style="font-size: 1.4rem; color: #eeddb0; margin-bottom: 8px;">
-              <span class="gold-gradient-text">4.</span> Your Contact & Event Information
-            </h3>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 8px;">
+              <h3 style="font-size: 1.35rem; color: #eeddb0;">
+                <span class="gold-gradient-text">4.</span> Your Details & Event Schedule
+              </h3>
+              <span class="date-status-badge"><i class="fa-solid fa-calendar-check"></i> Date Check Active</span>
+            </div>
             <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;">
-              Provide your wedding dates and location to receive your itemized quotation:
+              Provide your wedding dates and location in Agra to generate your official quotation:
             </p>
 
             <div class="form-row">
@@ -343,18 +502,32 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="custEmail">Email Address (Optional)</label>
-                <input type="email" id="custEmail" class="form-control" placeholder="For receiving quotation & invoice PDFs">
+                <input type="email" id="custEmail" class="form-control" placeholder="For receiving itemized quotation PDF">
               </div>
               <div class="form-group">
-                <label class="form-label" for="custDate">Wedding / Event Date *</label>
-                <input type="date" id="custDate" class="form-control" required value="2026-12-25">
+                <label class="form-label" for="custDate">Event Date *</label>
+                <input type="date" id="custDate" class="form-control" required value="2026-12-25" onchange="checkDateAvailability(this.value)">
+                <div id="dateAvailabilityNote" style="margin-top: 6px; font-size: 0.78rem; color: #25d366;">
+                  <i class="fa-solid fa-check-circle"></i> Auspicious date is currently available for booking.
+                </div>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="custLocation">Wedding City or Destination Venue *</label>
-                <input type="text" id="custLocation" class="form-control" placeholder="e.g. Taj Jai Mahal Palace, Jaipur" required>
+                <label class="form-label" for="custLocation">Agra Location or Venue *</label>
+                <select id="custLocation" class="form-control" required>
+                  <option value="Shahdra, Agra (Home City)">Shahdra, Agra (Headquarters / Home Location)</option>
+                  <option value="Jaypee Palace Hotel, Fatehabad Road, Agra">Jaypee Palace Hotel, Fatehabad Road</option>
+                  <option value="ITC Mughal, Taj Ganj, Agra">ITC Mughal, Taj Ganj</option>
+                  <option value="Taj Hotel & Convention Centre, Agra">Taj Hotel & Convention Centre</option>
+                  <option value="Courtyard by Marriott, Fatehabad Road, Agra">Courtyard by Marriott, Fatehabad Road</option>
+                  <option value="Hotel Clarks Shiraz, Agra Cantt">Hotel Clarks Shiraz, Agra Cantt</option>
+                  <option value="Shahdra Riverside Lawn, Agra">Shahdra Riverside Lawn, Agra</option>
+                  <option value="Sikandra / NH19 Lawns, Agra">Sikandra / NH19 Lawns, Agra</option>
+                  <option value="Dayalbagh / Kamla Nagar, Agra">Dayalbagh / Kamla Nagar, Agra</option>
+                  <option value="Other Venue / Destination in UP">Other Venue / Destination in UP</option>
+                </select>
               </div>
               <div class="form-group">
                 <label class="form-label" for="custGuests">Estimated Number of Guests *</label>
@@ -368,25 +541,20 @@
               </div>
             </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="custBudget">Approximate Overall Budget *</label>
-                <select id="custBudget" class="form-control">
-                  <option value="₹49,999 - ₹1,00,000">₹49,999 - ₹1,00,000 (Silver tier)</option>
-                  <option value="₹1,00,000 - ₹2,00,000" selected>₹1,00,000 - ₹2,00,000 (Gold tier)</option>
-                  <option value="₹2,00,000 - ₹5,00,000">₹2,00,000 - ₹5,00,000 (Platinum tier)</option>
-                  <option value="₹5,00,000+">₹5,00,000+ (Royal Destination Bespoke)</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="custNotes">Special Preferences or Instructions</label>
-                <input type="text" id="custNotes" class="form-control" placeholder="e.g. Royal Rajputana mandap with gold and ivory florals">
-              </div>
+            <div class="form-group">
+              <label class="form-label" for="custNotes">Special Preferences or Ceremonial Requests</label>
+              <textarea id="custNotes" class="form-control" rows="2" placeholder="e.g. Traditional Vedic Vivah Sanskar with red floral mandap, Rajasthani folk troupe for haldi, Punjabi dhol for baraat."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-gold btn-lg" style="width: 100%; margin-top: 10px; font-size: 1.15rem;">
-              <i class="fa-solid fa-paper-plane"></i> Submit Booking & Receive Official Quotation
-            </button>
+            <!-- Submit Action Buttons -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px;">
+              <button type="submit" class="btn btn-gold btn-lg" style="font-size: 1.05rem;">
+                <i class="fa-solid fa-paper-plane"></i> Submit Booking & Generate Quotation
+              </button>
+              <button type="button" class="btn btn-lg" style="background: #25D366; color: #fff; font-size: 1.05rem; display: inline-flex; align-items: center; justify-content: center; gap: 8px;" onclick="sendDirectWhatsAppEnquiry()">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Direct WhatsApp Enquiry
+              </button>
+            </div>
           </div>
         </form>
       </div>
@@ -413,7 +581,7 @@
             <span class="brand-subtitle">WEDDINGS • EVENTS • DESTINATIONS</span>
           </div>
           <p style="font-size: 0.88rem; color: var(--text-muted);">
-            India’s premier wedding planning architects turning lifelong dreams into royal reality.
+            Shahdra, Agra’s premier wedding planning architects turning lifelong dreams into royal reality.
           </p>
         </div>
         <div class="footer-col">
@@ -421,21 +589,27 @@
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="events.html">Ceremonies</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="services.html">18 Services</a></li>
             <li><a href="packages.html">Packages</a></li>
+            <li><a href="venues.html">Agra Venues</a></li>
+            <li><a href="pandit-services.html">Pandit Ji & Pooja</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Client Access</h4>
+          <h4>Client Tools</h4>
           <ul class="footer-links">
-            <li><a href="customer-portal.html">Quotation Desk</a></li>
-            <li><a href="admin.html">Admin Dashboard</a></li>
+            <li><a href="budget-calculator.html">Budget Calculator</a></li>
+            <li><a href="customer-dashboard.html">Customer Dashboard</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
             <li><a href="vendor-portal.html">Vendor Desk</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Contact Desk</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px;">
+            <i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, Uttar Pradesh (282006)
+          </p>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px;">
             <i class="fa-solid fa-phone text-gold"></i> +91 9719136364
           </p>
@@ -446,24 +620,102 @@
       </div>
       <div class="copyright-bar">
         <div>© 2026 NAISHVI CELEBRATIONS. All Rights Reserved.</div>
-        <div>Luxury Wedding Architecture & Event Management.</div>
+        <div>Shahdra, Agra, Uttar Pradesh. Luxury Wedding Architecture & Event Management.</div>
       </div>
     </div>
   </footer>
 
-  <a href="https://api.whatsapp.com/send?phone=919719136364" target="_blank" class="whatsapp-floating" aria-label="Chat on WhatsApp">
+  <a href="https://api.whatsapp.com/send?phone=919719136364&text=Hello%20Naishvi%20Celebrations,%20I%20want%20to%20plan%20a%20wedding%20in%20Agra" target="_blank" class="whatsapp-floating" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <script src="assets/js/store.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-    // Handle URL parameters for pre-selected packages or events
+    // Live subtotal calculator for custom package builder
+    function recalculateCustomTotal() {
+      let total = 0;
+      document.querySelectorAll('.service-checkbox-card').forEach(card => {
+        const checkbox = card.querySelector('.service-checkbox-input');
+        if (checkbox && checkbox.checked) {
+          total += parseInt(card.getAttribute('data-cost') || '0', 10);
+        }
+      });
+      const totalDisplay = document.getElementById('customEstimatedTotal');
+      if (totalDisplay) {
+        totalDisplay.textContent = '₹' + total.toLocaleString('en-IN');
+      }
+    }
+
+    // Date Availability Checker
+    function checkDateAvailability(dateStr) {
+      const note = document.getElementById('dateAvailabilityNote');
+      if (!note) return;
+      if (!dateStr) {
+        note.innerHTML = '<span style="color: var(--text-muted);">Select a date to check availability.</span>';
+        return;
+      }
+      const selDate = new Date(dateStr);
+      const isPast = selDate < new Date();
+      if (isPast) {
+        note.innerHTML = '<span style="color: #ff6b6b;"><i class="fa-solid fa-triangle-exclamation"></i> Please select a future date.</span>';
+      } else {
+        note.innerHTML = '<span style="color: #25d366;"><i class="fa-solid fa-circle-check"></i> Date is available! Our master planners and Agra vendors are open for booking.</span>';
+      }
+    }
+
+    // Direct WhatsApp Enquiry button
+    function sendDirectWhatsAppEnquiry() {
+      const name = document.getElementById('custName')?.value.trim() || 'Valued Client';
+      const mobile = document.getElementById('custMobile')?.value.trim() || 'Not specified';
+      const date = document.getElementById('custDate')?.value || 'Upcoming';
+      const location = document.getElementById('custLocation')?.value || 'Agra';
+      const guests = document.getElementById('custGuests')?.value || '250-500';
+      
+      const selectedEvents = [];
+      document.querySelectorAll('.event-pill-checkbox:checked').forEach(cb => selectedEvents.push(cb.value));
+      const eventsStr = selectedEvents.length > 0 ? selectedEvents.join(', ') : 'Sacred Wedding';
+
+      const selectedServices = [];
+      document.querySelectorAll('.service-checkbox-input:checked').forEach(cb => selectedServices.push(cb.value));
+      const servicesStr = selectedServices.length > 0 ? selectedServices.join(', ') : 'Turnkey Wedding Services';
+
+      const total = document.getElementById('customEstimatedTotal')?.textContent || '₹1,70,000';
+
+      const waMsg = encodeURIComponent(
+        `Namaste Naishvi Celebrations! 🙏\n\n` +
+        `I would like to inquire about wedding / event booking in Agra:\n` +
+        `👤 Name: ${name}\n` +
+        `📞 Mobile: ${mobile}\n` +
+        `📅 Date: ${date}\n` +
+        `📍 Venue/Location: ${location}\n` +
+        `👥 Guests: ${guests}\n` +
+        `💍 Functions: ${eventsStr}\n` +
+        `✨ Selected Services: ${servicesStr}\n` +
+        `💰 Estimated Budget: ${total}\n\n` +
+        `Please share the formal quotation and date confirmation.`
+      );
+
+      window.open(`https://api.whatsapp.com/send?phone=919719136364&text=${waMsg}`, '_blank');
+    }
+
+    // Attach listeners on load
     document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.service-checkbox-card').forEach(card => {
+        const chk = card.querySelector('.service-checkbox-input');
+        if (chk) {
+          chk.addEventListener('change', () => {
+            card.classList.toggle('selected', chk.checked);
+            recalculateCustomTotal();
+          });
+        }
+      });
+      recalculateCustomTotal();
+
+      // Check URL params
       const urlParams = new URLSearchParams(window.location.search);
       const pkg = urlParams.get('package');
       const evt = urlParams.get('event');
-
       if (pkg) {
         const radio = document.querySelector(`input[name="selectedPackageRadio"][value="${pkg}"]`);
         if (radio) radio.checked = true;

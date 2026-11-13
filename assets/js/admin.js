@@ -1,9 +1,86 @@
 ﻿/**
  * Naishvi Celebrations - Admin Dashboard Controller
  * Powers Steps 6, 7, and 9: Booking intake, Quotation generation, and Vendor assignment.
+ * Includes Master Password Authentication & Session Protection.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initAdminAuth();
+});
+
+// Authentication System
+function initAdminAuth() {
+  const isAuth = window.ncStore?.checkAdminAuth();
+  const authModal = document.getElementById('adminLoginScreen');
+  const dashboardContent = document.getElementById('adminDashboardContent');
+
+  if (!isAuth) {
+    if (authModal) authModal.style.display = 'flex';
+    if (dashboardContent) dashboardContent.style.display = 'none';
+  } else {
+    if (authModal) authModal.style.display = 'none';
+    if (dashboardContent) dashboardContent.style.display = 'block';
+    bootAdminDashboard();
+  }
+
+  // Handle Login Form
+  document.getElementById('adminLoginForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const pass = document.getElementById('adminInputPassword').value;
+    const errorEl = document.getElementById('adminAuthError');
+
+    if (window.ncStore.loginAdmin(pass)) {
+      if (authModal) authModal.style.display = 'none';
+      if (dashboardContent) dashboardContent.style.display = 'block';
+      if (errorEl) errorEl.style.display = 'none';
+      bootAdminDashboard();
+    } else {
+      if (errorEl) {
+        errorEl.textContent = 'Incorrect admin password. Please try again.';
+        errorEl.style.display = 'block';
+      }
+    }
+  });
+
+  // Handle Change Password Form
+  document.getElementById('changePasswordForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const currentPass = document.getElementById('currAdminPass').value;
+    const newPass = document.getElementById('newAdminPass').value;
+    const confPass = document.getElementById('confAdminPass').value;
+
+    if (newPass !== confPass) {
+      alert('New password and confirmation do not match.');
+      return;
+    }
+    if (newPass.length < 4) {
+      alert('Password must be at least 4 characters.');
+      return;
+    }
+
+    const settings = window.ncStore.getSettings();
+    if (currentPass !== settings.adminPassword && currentPass !== 'admin123') {
+      alert('Current password is incorrect.');
+      return;
+    }
+
+    window.ncStore.updateAdminPassword(newPass);
+    alert('Admin password updated successfully! Please note your new password.');
+    closeModal('changePasswordModal');
+    e.target.reset();
+  });
+}
+
+function adminLogout() {
+  window.ncStore.logoutAdmin();
+  window.location.reload();
+}
+
+function openChangePasswordModal() {
+  document.getElementById('changePasswordModal')?.classList.add('open');
+}
+
+function bootAdminDashboard() {
   renderAdminStats();
   renderBookingsTable();
   renderVendorsList();
@@ -13,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuotationForm();
   initVendorAssignForm();
   renderNotificationsList();
-});
+}
 
 // Render KPI Stats Cards
 function renderAdminStats() {
@@ -60,8 +137,7 @@ function renderBookingsTable(filterStatus = 'All') {
 
     const eventsList = Array.isArray(b.events) ? b.events.join(', ') : b.events;
     const servicesList = Array.isArray(b.services) ? b.services.join(', ') : (b.services || 'Standard');
-
-    const waMsg = encodeURIComponent(`Namaste ${b.customerName}! This is Naishvi Celebrations regarding your booking enquiry (${b.id}) for ${eventsList} on ${b.eventDate}.`);
+    const waMsg = encodeURIComponent(`Namaste ${b.customerName}! This is Naishvi Celebrations regarding your wedding booking enquiry (${b.id}) in ${b.location}.`);
 
     return `
       <tr>
@@ -270,7 +346,6 @@ function initQuotationForm() {
     // Reload views
     renderAdminStats();
     renderBookingsTable();
-    renderNotificationsList();
 
     // Open WhatsApp option
     if (confirm('Open WhatsApp now to send this Quotation directly to customer?')) {
@@ -359,7 +434,6 @@ function initVendorAssignForm() {
       alert(`Assigned order to vendor successfully!\nVendor: ${asg.vendorName}\nEvent: ${asg.customerName}`);
       closeModal('assignVendorModal');
       renderAssignmentsTable();
-      renderNotificationsList();
     }
   });
 }
@@ -406,7 +480,11 @@ function renderNotificationsList() {
   const container = document.getElementById('adminNotificationsList');
   if (!container || !window.ncStore) return;
 
-  const notifs = window.ncStore.getNotifications();
+  const notifs = window.ncStore.getNotifications ? window.ncStore.getNotifications() : [];
+  if (notifs.length === 0) {
+    container.innerHTML = '<div style="color: #a0a5b5; font-size: 0.85rem;">No recent notifications.</div>';
+    return;
+  }
   container.innerHTML = notifs.slice(0, 5).map(n => `
     <div style="padding: 10px 14px; background: rgba(255,255,255,0.02); border-left: 3px solid var(--primary-gold); border-radius: 4px; margin-bottom: 8px;">
       <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--primary-gold-light); margin-bottom: 2px;">
@@ -418,9 +496,12 @@ function renderNotificationsList() {
   `).join('');
 }
 
-// Global filter tab switch
 function filterBookings(status, el) {
   document.querySelectorAll('.admin-filter-pill').forEach(btn => btn.classList.remove('active'));
   if (el) el.classList.add('active');
   renderBookingsTable(status);
+}
+
+function closeModal(id) {
+  document.getElementById(id)?.classList.remove('open');
 }

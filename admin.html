@@ -261,11 +261,41 @@
 
       <div style="display: flex; gap: 12px; align-items: center;">
         <span class="status-badge badge-confirmed"><i class="fa-solid fa-circle text-success"></i> Live System</span>
+        <button type="button" class="btn btn-outline-gold btn-sm" onclick="openChangePasswordModal()"><i class="fa-solid fa-key"></i> Change Password</button>
+        <button type="button" class="btn btn-maroon btn-sm" onclick="adminLogout()"><i class="fa-solid fa-lock"></i> Logout</button>
         <a href="index.html" class="btn btn-outline-gold btn-sm"><i class="fa-solid fa-arrow-left"></i> Back to Site</a>
       </div>
     </div>
   </header>
 
+  <!-- Admin Login Screen (Protected Access) -->
+  <div id="adminLoginScreen" style="display: none; min-height: 80vh; align-items: center; justify-content: center; padding: 40px 20px;">
+    <div style="background: var(--bg-card); border: 2px solid var(--border-gold); border-radius: var(--radius-lg); padding: 44px; max-width: 480px; width: 100%; box-shadow: var(--shadow-luxury); text-align: center;">
+      <div style="width: 72px; height: 72px; border-radius: 50%; background: rgba(212, 175, 55, 0.12); border: 2px solid var(--primary-gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; color: var(--primary-gold); font-size: 32px;">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <h2 style="font-size: 1.8rem; color: #fff; margin-bottom: 6px;">Admin Authentication</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px;">
+        Naishvi Celebrations Central Management Desk. Please enter your master password to unlock.
+      </p>
+
+      <form id="adminLoginForm">
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label">Master Admin Password *</label>
+          <input type="password" id="adminInputPassword" class="form-control" placeholder="Enter admin password (Default: admin123)" required autofocus style="text-align: center; letter-spacing: 2px; font-size: 1.1rem;">
+          <div id="adminAuthError" style="display: none; color: #ef4444; font-size: 0.82rem; margin-top: 6px; text-align: center;"></div>
+        </div>
+        <button type="submit" class="btn btn-gold btn-lg" style="width: 100%;">
+          <i class="fa-solid fa-unlock"></i> Unlock Admin Dashboard
+        </button>
+        <div style="font-size: 0.78rem; color: #717684; margin-top: 14px;">
+          <i class="fa-solid fa-shield-halved"></i> Default PIN: <code style="color: var(--primary-gold-light);">admin123</code> (Can be changed inside)
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="adminDashboardContent">
   <main class="admin-wrapper">
     <div class="container">
 
@@ -515,6 +545,42 @@
 
     </div>
   </main>
+  </div>
+
+  <!-- Change Password Modal -->
+  <div class="modal-backdrop" id="changePasswordModal">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeModal('changePasswordModal')" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <h3 style="color: #fff; font-size: 1.4rem; margin-bottom: 8px;">
+        <i class="fa-solid fa-key text-gold"></i> Change Admin Master Password
+      </h3>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px;">
+        Set your custom password to protect leads, customer contacts, and financial records.
+      </p>
+
+      <form id="changePasswordForm">
+        <div class="form-group">
+          <label class="form-label">Current Master Password *</label>
+          <input type="password" id="currAdminPass" class="form-control" placeholder="Enter current password" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">New Password *</label>
+          <input type="password" id="newAdminPass" class="form-control" placeholder="Minimum 4 characters" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirm New Password *</label>
+          <input type="password" id="confAdminPass" class="form-control" placeholder="Re-enter new password" required>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-lg" style="width: 100%;">
+          <i class="fa-solid fa-check"></i> Save New Admin Password
+        </button>
+      </form>
+    </div>
+  </div>
 
   <!-- Vendor Assignment Modal -->
   <div class="modal-backdrop" id="assignVendorModal">

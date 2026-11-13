@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pandit Ji & Religious Pooja Services | NAISHVI CELEBRATIONS</title>
+  <meta name="description" content="Book learned Vedic Pandit Ji in Agra for Vivah Sanskar, 7 Pheras, Havan, Satyanarayan Katha, Griha Pravesh, Mata Ki Chowki and religious ceremonies.">
+
+  <!-- Google Fonts: Playfair Display + Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .pooja-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .pooja-card:hover {
+      border-color: var(--primary-gold-light);
+      background: var(--bg-card-hover);
+      transform: translateY(-4px);
+    }
+    .pooja-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--border-gold);
+      color: var(--primary-gold-light);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      margin-bottom: 8px;
+    }
+    .pooja-form-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 38px;
+      box-shadow: var(--shadow-luxury);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div>
+        <span><i class="fa-solid fa-phone text-gold"></i> +91 9719136364</span>
+        <span style="margin-left: 20px;"><i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, Uttar Pradesh</span>
+      </div>
+      <div class="top-links">
+        <a href="customer-dashboard.html"><i class="fa-solid fa-user-check"></i> Customer Dashboard</a>
+        <a href="admin.html"><i class="fa-solid fa-lock"></i> Admin Portal</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header-main">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-title">NAISHVI CELEBRATIONS</span>
+        <span class="brand-subtitle">WEDDINGS • EVENTS • DESTINATIONS</span>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="services.html">18 Services</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="venues.html">Agra Venues</a></li>
+        <li><a href="pandit-services.html" class="active">Pandit Ji & Pooja</a></li>
+        <li><a href="budget-calculator.html">Budget Calculator</a></li>
+      </ul>
+
+      <div class="nav-cta-group">
+        <a href="booking.html" class="btn btn-gold btn-sm">
+          <i class="fa-solid fa-calendar-check"></i> Book Event
+        </a>
+        <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Subpage Hero -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-overlay"></div>
+    <div class="container">
+      <div class="subpage-hero-content">
+        <span class="hero-badge"><i class="fa-solid fa-om"></i> Sacred Vedic Traditions & Sanskars</span>
+        <h1 class="subpage-title">Pandit Ji & Pooja Services</h1>
+        <p class="subpage-desc">
+          Experienced Vedic Brahmins, complete authentic havan samagri, and auspicious ritual coordination across Agra for weddings, housewarmings, and religious milestones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pandit Ji Ceremonies Catalog -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">All 15 Sacred Sanskars</span>
+        <h2 class="section-title">Vedic Ceremonies Performed According to Shastras</h2>
+        <p class="section-desc">
+          From sacred 7 Pheras and Vivah Sanskar to Griha Pravesh and Mata Ki Chowki, choose your required ritual below:
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 70px;" id="panditPoojaGrid">
+        <!-- Injected via store.js -->
+      </div>
+
+      <!-- Dedicated Pandit Booking Form (Image 6 & 7 Specifications) -->
+      <div class="pooja-form-card" id="panditBookingFormSection">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <span class="section-tag"><i class="fa-solid fa-om"></i> Dedicated Pooja Reservation</span>
+          <h2 style="font-size: 2.2rem; color: #fff;">Book Verified Vedic Pandit Ji in Agra</h2>
+          <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 680px; margin: 0 auto;">
+            Complete arrangements including certified Vedic priests, full authentic havan samagri, flowers, and ritual execution.
+          </p>
+        </div>
+
+        <form id="panditBookingForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Select Puja / Sanskar Name *</label>
+              <select id="pujaSelect" class="form-control" required>
+                <!-- Populated via script -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Auspicious Date & Time *</label>
+              <input type="datetime-local" id="pujaDateTime" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Client Full Name *</label>
+              <input type="text" id="pujaCustName" class="form-control" placeholder="Yajman / Host Name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">WhatsApp Contact Number *</label>
+              <input type="tel" id="pujaCustPhone" class="form-control" placeholder="10-digit mobile number" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Location / Address in Agra *</label>
+              <input type="text" id="pujaLocation" class="form-control" placeholder="e.g. Shahdra, Fatehabad Road, Dayalbagh, Agra" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Language Preference *</label>
+              <select id="pujaLanguage" class="form-control">
+                <option value="Sanskrit & Hindi (with explanation)" selected>Sanskrit & Hindi (with ritual explanation)</option>
+                <option value="Pure Vedic Sanskrit">Pure Vedic Sanskrit</option>
+                <option value="Hindi / Marwari Traditional">Hindi / Marwari Traditional</option>
+                <option value="English & Sanskrit">Bilingual English & Sanskrit</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Pooja Samagri Requirement *</label>
+              <select id="pujaSamagri" class="form-control">
+                <option value="Complete Samagri Included (Turnkey Arrangement)" selected>Complete Samagri Included by Naishvi (Turnkey arrangement)</option>
+                <option value="Samagri Excluded (List provided to client)">Samagri Excluded (Pandit Ji provides list, client purchases)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Number of Vedic Pandits Required</label>
+              <select id="pujaPanditCount" class="form-control">
+                <option value="1 Head Vedic Pandit Ji" selected>1 Head Vedic Pandit Ji</option>
+                <option value="2 Pandit Ji (Head Priest + Assistant Acharya)">2 Pandit Ji (Head Priest + Assistant Acharya)</option>
+                <option value="5 Pandit Ji (Maha Yagya / Royal Vivah Chanting)">5 Pandit Ji (Maha Yagya / Royal Vivah Chanting)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Special Gotra / Astrological Requirements</label>
+            <input type="text" id="pujaNotes" class="form-control" placeholder="e.g. Gotra name, specific muhurat time, ancestral rites">
+          </div>
+
+          <button type="submit" class="btn btn-gold btn-lg" style="width: 100%; font-size: 1.15rem; margin-top: 10px;">
+            <i class="fa-solid fa-om"></i> Confirm Pandit Ji Booking & Request Dakshina Quote
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <span class="brand-title">NAISHVI CELEBRATIONS</span>
+            <span class="brand-subtitle">WEDDINGS • EVENTS • DESTINATIONS</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            India’s premier wedding architects turning your sacred celebrations into unforgettable memories.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Pooja Services</h4>
+          <ul class="footer-links">
+            <li><a href="pandit-services.html">Vivah Sanskar Pheras</a></li>
+            <li><a href="pandit-services.html">Mata Ki Chowki</a></li>
+            <li><a href="pandit-services.html">Griha Pravesh Puja</a></li>
+            <li><a href="pandit-services.html">Satyanarayan Katha</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Client Access</h4>
+          <ul class="footer-links">
+            <li><a href="booking.html">Book Event</a></li>
+            <li><a href="customer-dashboard.html">Customer Dashboard</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Agra Office</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px;">
+            <i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, UP
+          </p>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            <i class="fa-solid fa-phone text-gold"></i> +91 9719136364
+          </p>
+        </div>
+      </div>
+      <div class="copyright-bar">
+        <div>© 2026 NAISHVI CELEBRATIONS. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://api.whatsapp.com/send?phone=919719136364" target="_blank" class="whatsapp-floating" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="assets/js/store.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('panditPoojaGrid');
+      const select = document.getElementById('pujaSelect');
+      if (!window.ncStore) return;
+
+      const ceremonies = window.ncStore.getPanditCeremonies();
+
+      if (select) {
+        select.innerHTML = ceremonies.map(c => `<option value="${c.name}">${c.name} (${c.duration})</option>`).join('');
+      }
+
+      if (grid) {
+        grid.innerHTML = ceremonies.map(c => `
+          <div class="pooja-card">
+            <div>
+              <span class="pooja-badge"><i class="fa-solid fa-clock"></i> ${c.duration}</span>
+              <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 8px;">${c.name}</h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 16px;">
+                ${c.desc}
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 10px;">
+              <button type="button" class="btn btn-gold btn-sm" style="flex-grow: 1;" onclick="selectPoojaAndScroll('${c.name}')">
+                Book Puja
+              </button>
+              <a href="https://api.whatsapp.com/send?phone=919719136364&text=${encodeURIComponent(`Namaste Naishvi Celebrations! I want to inquire about booking Pandit Ji for ${c.name} in Agra.`)}" target="_blank" class="btn btn-outline-gold btn-sm">
+                <i class="fa-brands fa-whatsapp text-success"></i>
+              </a>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Pre-set default datetime to tomorrow
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 7);
+      tomorrow.setHours(9, 30, 0, 0);
+      const dtInput = document.getElementById('pujaDateTime');
+      if (dtInput) {
+        dtInput.value = tomorrow.toISOString().slice(0, 16);
+      }
+
+      // Handle form submission
+      document.getElementById('panditBookingForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const pName = document.getElementById('pujaSelect').value;
+        const pDate = document.getElementById('pujaDateTime').value;
+        const cName = document.getElementById('pujaCustName').value;
+        const cPhone = document.getElementById('pujaCustPhone').value;
+        const pLoc = document.getElementById('pujaLocation').value;
+        const pLang = document.getElementById('pujaLanguage').value;
+        const pSamagri = document.getElementById('pujaSamagri').value;
+
+        const booking = window.ncStore.createBooking({
+          customerName: cName,
+          mobile: cPhone,
+          location: pLoc,
+          eventDate: pDate.split('T')[0],
+          events: [`Pooja: ${pName}`],
+          packageId: 'pandit-service',
+          packageName: 'Pandit Ji & Religious Ceremony',
+          services: ['Pandit Ji & Religious Ceremonies'],
+          panditRequirements: {
+            ceremony: pName,
+            language: pLang,
+            samagri: pSamagri
+          }
+        });
+
+        const waText = encodeURIComponent(
+          `Namaste Naishvi Celebrations! 🙏\nI have booked Pandit Ji for a religious ceremony:\n\n` +
+          `🕉️ Ceremony: ${pName}\n` +
+          `👤 Yajman Name: ${cName}\n` +
+          `📞 Phone: ${cPhone}\n` +
+          `📅 Date & Time: ${pDate}\n` +
+          `📍 Location in Agra: ${pLoc}\n` +
+          `📿 Language: ${pLang}\n` +
+          `🔥 Samagri: ${pSamagri}\n\n` +
+          `Please confirm Pandit Ji availability & dakshina quote.`
+        );
+
+        alert(`🕉️ Har Har Mahadev!\nYour request for ${pName} has been received (Ref: ${booking.id}).\nOur Acharya will contact you shortly on ${cPhone}.`);
+        window.open(`https://api.whatsapp.com/send?phone=919719136364&text=${waText}`, '_blank');
+      });
+
+      document.getElementById('mobileToggleBtn')?.addEventListener('click', () => {
+        document.getElementById('navMenu')?.classList.toggle('open');
+      });
+    });
+
+    function selectPoojaAndScroll(poojaName) {
+      const select = document.getElementById('pujaSelect');
+      if (select) select.value = poojaName;
+      document.getElementById('panditBookingFormSection')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

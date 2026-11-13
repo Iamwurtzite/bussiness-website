@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Budget Calculator | NAISHVI CELEBRATIONS</title>
+  <meta name="description" content="Calculate your estimated wedding cost in Agra. Input your budget and receive instant breakdown for decor, catering, photography, and entertainment.">
+
+  <!-- Google Fonts: Playfair Display + Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .calc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-luxury);
+    }
+    .slider-container {
+      margin: 28px 0;
+    }
+    .budget-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 5px;
+      background: #2a2d38;
+      outline: none;
+      accent-color: var(--primary-gold);
+    }
+    .budget-display-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary-gold-light);
+      margin: 8px 0 20px;
+    }
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.95rem;
+    }
+    .breakdown-row strong {
+      color: #ffffff;
+    }
+    .breakdown-pct {
+      font-size: 0.8rem;
+      color: var(--primary-gold);
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div>
+        <span><i class="fa-solid fa-phone text-gold"></i> +91 9719136364</span>
+        <span style="margin-left: 20px;"><i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, Uttar Pradesh</span>
+      </div>
+      <div class="top-links">
+        <a href="customer-dashboard.html"><i class="fa-solid fa-user-check"></i> Customer Dashboard</a>
+        <a href="admin.html"><i class="fa-solid fa-lock"></i> Admin Portal</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header-main">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-title">NAISHVI CELEBRATIONS</span>
+        <span class="brand-subtitle">WEDDINGS • EVENTS • DESTINATIONS</span>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="services.html">18 Services</a></li>
+        <li><a href="packages.html">Packages</a></li>
+        <li><a href="venues.html">Agra Venues</a></li>
+        <li><a href="pandit-services.html">Pandit Ji & Pooja</a></li>
+        <li><a href="budget-calculator.html" class="active">Budget Calculator</a></li>
+      </ul>
+
+      <div class="nav-cta-group">
+        <a href="booking.html" class="btn btn-gold btn-sm">
+          <i class="fa-solid fa-calendar-check"></i> Book Event
+        </a>
+        <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Subpage Hero -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-overlay"></div>
+    <div class="container">
+      <div class="subpage-hero-content">
+        <span class="hero-badge"><i class="fa-solid fa-calculator"></i> Transparent Cost Estimation</span>
+        <h1 class="subpage-title">Wedding Budget Calculator</h1>
+        <p class="subpage-desc">
+          Plan your wedding finances with clarity. Select your estimated overall budget or guest count to view realistic allocations across catering, decor, photography, and entertainment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Calculator Section -->
+  <section class="section-padding">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: flex-start;">
+        
+        <!-- Controls Card -->
+        <div class="calc-card">
+          <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 8px;">
+            <i class="fa-solid fa-sliders text-gold"></i> Set Your Overall Target Budget
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 24px;">
+            Slide to adjust your desired budget. The allocation model follows industry standards for luxury Indian weddings.
+          </p>
+
+          <div style="text-align: center;">
+            <div style="font-size: 0.85rem; color: #a0a5b5; text-transform: uppercase; letter-spacing: 1px;">Selected Wedding Budget</div>
+            <div class="budget-display-num" id="displayBudget">₹2,00,000</div>
+          </div>
+
+          <div class="slider-container">
+            <input type="range" class="budget-slider" id="budgetRange" min="50000" max="1500000" step="25000" value="200000" oninput="updateCalculator()">
+            <div style="display: flex; justify-content: space-between; font-size: 0.78rem; color: #717684; margin-top: 8px;">
+              <span>₹50,000 (Silver)</span>
+              <span>₹2,00,000 (Gold)</span>
+              <span>₹5,00,000 (Platinum)</span>
+              <span>₹15,00,000+ (Royal Bespoke)</span>
+            </div>
+          </div>
+
+          <!-- Guest Count Selector -->
+          <div class="form-group" style="margin-top: 30px;">
+            <label class="form-label"><i class="fa-solid fa-users text-gold"></i> Estimated Number of Guests</label>
+            <select class="form-control" id="calcGuestCount" onchange="updateCalculator()">
+              <option value="100">100 Guests (Intimate Gathering)</option>
+              <option value="250" selected>250 Guests (Standard Grand Celebration)</option>
+              <option value="500">500 Guests (Royal Wedding Feast)</option>
+              <option value="1000">1,000+ Guests (Mega Nuptial Banquet)</option>
+            </select>
+          </div>
+
+          <!-- Recommended Package Badge -->
+          <div style="background: rgba(212, 175, 55, 0.1); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 18px; margin-top: 24px;">
+            <div style="font-size: 0.78rem; color: var(--primary-gold-light); text-transform: uppercase; font-weight: 600;">Recommended Naishvi Package</div>
+            <h4 style="font-size: 1.3rem; color: #fff; margin: 4px 0;" id="recPackageName">Gold Wedding Package</h4>
+            <p style="font-size: 0.82rem; color: #d1d5db;" id="recPackageDesc">
+              Ideal balance of theme mandap decor, 4K cinematography, multi-cuisine catering supervision, and high-energy Sangeet DJ.
+            </p>
+          </div>
+        </div>
+
+        <!-- Breakdown Output Card -->
+        <div class="calc-card" style="border-color: var(--primary-gold);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="font-size: 1.4rem; color: #fff;">
+              <i class="fa-solid fa-chart-pie text-gold"></i> Estimated Cost Allocation
+            </h3>
+            <span class="status-badge badge-confirmed" style="background: rgba(212,175,55,0.15); color: var(--primary-gold-light); border-color: var(--border-gold);">Agra Rates</span>
+          </div>
+
+          <div class="breakdown-row">
+            <div>
+              <strong>Wedding Décor & Theme Mandap</strong>
+              <span class="breakdown-pct">(30%)</span>
+            </div>
+            <strong id="costDecor" class="text-gold">₹60,000</strong>
+          </div>
+
+          <div class="breakdown-row">
+            <div>
+              <strong>Catering & Feast Coordination</strong>
+              <span class="breakdown-pct">(35%)</span>
+            </div>
+            <strong id="costCatering" class="text-gold">₹70,000</strong>
+          </div>
+
+          <div class="breakdown-row">
+            <div>
+              <strong>Candid Photography & 4K Cinema</strong>
+              <span class="breakdown-pct">(15%)</span>
+            </div>
+            <strong id="costPhoto" class="text-gold">₹30,000</strong>
+          </div>
+
+          <div class="breakdown-row">
+            <div>
+              <strong>DJ, Sound, Truss & Entertainment</strong>
+              <span class="breakdown-pct">(10%)</span>
+            </div>
+            <strong id="costDJ" class="text-gold">₹20,000</strong>
+          </div>
+
+          <div class="breakdown-row">
+            <div>
+              <strong>Pandit Ji & Religious Ceremonies</strong>
+              <span class="breakdown-pct">(5%)</span>
+            </div>
+            <strong id="costPandit" class="text-gold">₹10,000</strong>
+          </div>
+
+          <div class="breakdown-row">
+            <div>
+              <strong>Bridal Styling & Special FX</strong>
+              <span class="breakdown-pct">(5%)</span>
+            </div>
+            <strong id="costMakeup" class="text-gold">₹10,000</strong>
+          </div>
+
+          <div style="margin-top: 28px; display: flex; flex-direction: column; gap: 12px;">
+            <a href="booking.html" class="btn btn-gold btn-lg" id="btnBookBudget">
+              <i class="fa-solid fa-file-invoice-dollar"></i> Request Official Quotation For This Budget
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=919719136364&text=Namaste%20Naishvi%20Celebrations!%20I%20used%20your%20Wedding%20Budget%20Calculator%20for%20a%20budget%20of%20Rs.%202,00,000.%20Please%20guide%20me." target="_blank" class="btn btn-outline-gold" id="btnWaBudget">
+              <i class="fa-brands fa-whatsapp text-success"></i> Discuss This Budget On WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <span class="brand-title">NAISHVI CELEBRATIONS</span>
+            <span class="brand-subtitle">WEDDINGS • EVENTS • DESTINATIONS</span>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            India’s premier wedding architects turning your sacred celebrations into unforgettable memories.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Planning Tools</h4>
+          <ul class="footer-links">
+            <li><a href="budget-calculator.html">Budget Calculator</a></li>
+            <li><a href="venues.html">Agra Venue Finder</a></li>
+            <li><a href="pandit-services.html">Pandit Ji & Pooja</a></li>
+            <li><a href="packages.html">Packages & Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Client Access</h4>
+          <ul class="footer-links">
+            <li><a href="booking.html">Book Event</a></li>
+            <li><a href="customer-dashboard.html">Customer Dashboard</a></li>
+            <li><a href="admin.html">Admin Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Agra Office</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px;">
+            <i class="fa-solid fa-location-dot text-gold"></i> Shahdra, Agra, UP
+          </p>
+          <p style="font-size: 0.88rem; color: var(--text-muted);">
+            <i class="fa-solid fa-phone text-gold"></i> +91 9719136364
+          </p>
+        </div>
+      </div>
+      <div class="copyright-bar">
+        <div>© 2026 NAISHVI CELEBRATIONS. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://api.whatsapp.com/send?phone=919719136364" target="_blank" class="whatsapp-floating" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="assets/js/store.js"></script>
+  <script>
+    function updateCalculator() {
+      const budget = Number(document.getElementById('budgetRange').value);
+      document.getElementById('displayBudget').textContent = '₹' + budget.toLocaleString('en-IN');
+
+      const costDecor = Math.round(budget * 0.30);
+      const costCatering = Math.round(budget * 0.35);
+      const costPhoto = Math.round(budget * 0.15);
+      const costDJ = Math.round(budget * 0.10);
+      const costPandit = Math.round(budget * 0.05);
+      const costMakeup = Math.round(budget * 0.05);
+
+      document.getElementById('costDecor').textContent = '₹' + costDecor.toLocaleString('en-IN');
+      document.getElementById('costCatering').textContent = '₹' + costCatering.toLocaleString('en-IN');
+      document.getElementById('costPhoto').textContent = '₹' + costPhoto.toLocaleString('en-IN');
+      document.getElementById('costDJ').textContent = '₹' + costDJ.toLocaleString('en-IN');
+      document.getElementById('costPandit').textContent = '₹' + costPandit.toLocaleString('en-IN');
+      document.getElementById('costMakeup').textContent = '₹' + costMakeup.toLocaleString('en-IN');
+
+      // Package recommendation logic
+      let pkgName = 'Silver Wedding Package';
+      let pkgDesc = 'Essential floral stage decor, candid photography, standard sound, and single-event focus.';
+      let pkgParam = 'silver';
+
+      if (budget >= 99999 && budget < 200000) {
+        pkgName = 'Gold Wedding Package (Most Popular)';
+        pkgDesc = 'Complete coverage for 2 ceremonies, 30ft theme mandap, 4K cinematic film & drone, concert line array DJ.';
+        pkgParam = 'gold';
+      } else if (budget >= 200000) {
+        pkgName = 'Platinum Royal Extravaganza';
+        pkgDesc = 'Multi-day 360° wedding production, imported floral mandap, celebrity DJ, vintage baraat car, and 5 senior directors.';
+        pkgParam = 'platinum';
+      }
+
+      document.getElementById('recPackageName').textContent = pkgName;
+      document.getElementById('recPackageDesc').textContent = pkgDesc;
+      document.getElementById('btnBookBudget').href = `booking.html?budget=₹${budget.toLocaleString('en-IN')}&package=${pkgParam}`;
+
+      const waMsg = encodeURIComponent(`Namaste Naishvi Celebrations! I used your Wedding Budget Calculator for a budget of ₹${budget.toLocaleString('en-IN')}. Please provide an official quotation.`);
+      document.getElementById('btnWaBudget').href = `https://api.whatsapp.com/send?phone=919719136364&text=${waMsg}`;
+    }
+
+    document.getElementById('mobileToggleBtn')?.addEventListener('click', () => {
+      document.getElementById('navMenu')?.classList.toggle('open');
+    });
+
+    // Run on load
+    updateCalculator();
+  </script>
+</body>
+</html>
